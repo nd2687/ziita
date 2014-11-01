@@ -1,4 +1,6 @@
 class Admin::AdministratorsController < Admin::Base
+  skip_before_filter :authenticate_administrator
+
   def new
     @administrator = Administrator.new
   end
