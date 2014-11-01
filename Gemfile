@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'factory_girl_rails', '~> 4.4.1'
+gem 'nokogiri', '~> 1.6.3'
 
 gem 'annotate', :git => 'https://github.com/ctran/annotate_models'
 
