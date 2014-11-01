@@ -6,9 +6,10 @@ class ApplicationController < ActionController::Base
   private
   def current_admin
     if session[:current_admin_id]
-      current_admin = Administrator.find_by_id(session[:current_admin_id])
+      @current_admin = Administrator.find_by_id(session[:current_admin_id])
       session.delete(:current_admin_id) unless @current_admin
     end
+    @current_admin
   end
   helper_method :current_admin
 
