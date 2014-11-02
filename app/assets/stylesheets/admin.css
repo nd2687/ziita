@@ -1,4 +1,5 @@
 /*
+ *= require bootstrap-sass
  *= require_tree ./admin
  *= require_self
  */
