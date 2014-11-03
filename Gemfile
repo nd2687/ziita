@@ -27,6 +27,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.4.1'
+  gem 'launchy'
 end
 
 group :development do
