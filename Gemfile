@@ -30,7 +30,9 @@ group :test do
 end
 
 group :development do
-  gem 'pry-rails'
+  gem 'spring-commands-rspec', '~> 1.0.2'
+  gem 'pry', '~> 0.10.1'
+  gem 'pry-rails', '~> 0.3.2'
   gem 'pry-byebug', '~> 2.0.0'
   gem 'spring'
   gem 'capistrano-rails'
