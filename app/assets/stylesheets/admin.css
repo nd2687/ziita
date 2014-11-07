@@ -1,5 +1,6 @@
 /*
  *= require bootstrap-sass
  *= require_tree ./admin
+ *= require_tree ./common
  *= require_self
  */
