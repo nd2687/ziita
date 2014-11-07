@@ -1,6 +1,8 @@
 class Admin::SessionsController < Admin::Base
   skip_before_filter :authenticate_administrator
 
+  layout 'admin_session'
+
   def new
   end
 

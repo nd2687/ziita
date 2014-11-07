@@ -1,0 +1,5 @@
+/*
+ *= require_tree ./user
+ *= require_tree ./common
+ *= require_self
+ */
