@@ -1,11 +1,14 @@
 <p>User::Articles#show</p>
 <p><%= link_to '戻る', [ :user, :articles ] %></p>
+
 <p>title:</p>
 <p><%= @article.title %></p>
 <hr>
+
 <p>body:</p>
 <p><%= @article.body %></p>
 <hr>
+
 <p>comments:</p>
 <ul>
   <% @comments.each do |comment| %>
@@ -15,3 +18,5 @@
     </li>
   <% end %>
 </ul>
+<hr>
+<p><%= link_to 'コメントを追加', [ :new, :user, @article, :comment ] %></p>
