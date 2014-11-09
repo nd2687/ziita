@@ -1,0 +1,10 @@
+<p>User::Comments#index(各記事コメ一覧)</p>
+<ul>
+  <% @comments.each do |comment| %>
+    <hr>
+    <li>
+      <p><%= comment.name %></p>
+      <p><%= comment.body %></p>
+    </li>
+  <% end %>
+</ul>
