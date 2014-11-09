@@ -2,6 +2,9 @@
 <p><%= link_to '戻る', [ :user, :root ] %></p>
 <ul>
   <% @articles.each do |article| %>
-    <li><%= link_to article.title, [ :user, article ] %></li>
+    <li>
+      <%= link_to article.title, [ :user, article ] %>
+      <%= link_to "[#{article.comments.count}]", [ :user, article, :comments ] %>
+    </li>
   <% end %>
 </ul>
