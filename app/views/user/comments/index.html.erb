@@ -1,7 +1,10 @@
 <p>User::Comments#index(各記事コメ一覧)</p>
+<p><%= link_to '戻る', [ :user, :articles ] %></p>
+
 <ul>
   <% @comments.each do |comment| %>
     <hr>
+
     <li>
       <p><%= comment.name %></p>
       <p><%= comment.body %></p>

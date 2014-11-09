@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :user do
     root 'top#index'
     resources :articles, only: [ :index, :show ] do
-      resources :comments, only: [ :index ]
+      resources :comments
     end
   end
 end
