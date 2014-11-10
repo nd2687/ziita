@@ -7,4 +7,12 @@ module ApplicationHelper
       m.div(flash[:notice], class: 'alert alert-info', role: 'alert') if flash[:notice].present?
     end
   end
+
+  def error_message(model)
+    text = raw('')
+    model.errors.full_messages.each do |msg|
+       text << content_tag(:p, msg, style: "color: red;")
+    end
+    text
+  end
 end
