@@ -1,16 +1,15 @@
 class User::CommentsController < User::Base
+  before_action :prepare_article
+
   def index
-    @article = Article.find(params[:article_id])
     @comments = @article.comments
   end
 
   def new
-    @article = Article.find(params[:article_id])
     @comment = Comment.new
   end
 
   def create
-    @article = Article.find(params[:article_id])
     @comment = Comment.new(comment_params)
     @comment.article = @article
     @comment.name = "名無し" if @comment.name.empty?
@@ -28,5 +27,9 @@ class User::CommentsController < User::Base
     params.require(:comment).permit(
       :name, :body
     )
+  end
+
+  def prepare_article
+    @article = Article.find(params[:article_id])
   end
 end

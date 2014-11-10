@@ -9,9 +9,7 @@
   </p>
   <p>
     <%= f.label :body, "本文" %>
-    <% @comment.errors.full_messages.each do |msg| %>
-      <p><%= msg %></p>
-    <% end %>
+    <%= error_message @comment %>
     <%= f.text_field :body %>
   </p>
   <p><%= f.submit "追加" %></p>
