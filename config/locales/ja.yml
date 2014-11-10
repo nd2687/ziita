@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      comment:
+        body: 本文
+    errors:
+      models:
+        comment:
+          attributes:
+            body:
+              blank: を入力してください。
