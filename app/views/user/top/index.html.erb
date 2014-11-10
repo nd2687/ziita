@@ -1,2 +1,4 @@
+<%= link_to 'ログアウト', [ :user, :session ], method: :delete %>
 <p>Users::Top#index</p>
-<%= link_to "Articles", [ :user, :articles ] %>
+<%= link_to "Articles", [ :user, :articles ] %><br>
+<%= link_to "Accounts", user_account_path(current_user.id) %>

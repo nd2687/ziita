@@ -18,4 +18,19 @@ class ApplicationController < ActionController::Base
       redirect_to [ :new, :admin, :session ]
     end
   end
+
+  def current_user
+    if session[:current_user_id]
+      @current_user = Account.find_by_id(session[:current_user_id])
+      session.delete(:current_user_id) unless @current_user
+    end
+    @current_user
+  end
+  helper_method :current_user
+
+  def authenticate_account
+    unless current_user
+      redirect_to [ :new, :user, :session ]
+    end
+  end
 end
