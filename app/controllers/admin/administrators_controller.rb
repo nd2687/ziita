@@ -13,8 +13,8 @@ class Admin::AdministratorsController < Admin::Base
 
   private
   def administrator_params
-    params.require(:administrator).permit({
+    params.require(:administrator).permit(
       :login_name, :password, :password_confirmation
-    })
+    )
   end
 end

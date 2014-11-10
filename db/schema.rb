@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109150229) do
+ActiveRecord::Schema.define(version: 20141110143535) do
+
+  create_table "accounts", force: true do |t|
+    t.string   "identify_name",                     null: false
+    t.string   "email",                             null: false
+    t.string   "email_for_index",                   null: false
+    t.boolean  "email_publication", default: false, null: false
+    t.string   "password_digest",                   null: false
+    t.string   "self_introduction",                 null: false
+    t.string   "sites"
+    t.string   "company"
+    t.string   "residence"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["identify_name", "email_for_index"], name: "index_accounts_on_identify_name_and_email_for_index", unique: true, using: :btree
 
   create_table "administrators", force: true do |t|
     t.string   "login_name",      null: false
