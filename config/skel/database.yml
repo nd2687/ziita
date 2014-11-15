@@ -5,12 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: db/sp_development
+  database: db/ziita_development
 
 test:
   <<: *default
-  database: db/sp_test
+  database: db/ziita_test
 
 production:
   <<: *default
-  database: db/sp_production
+  database: db/ziita_production

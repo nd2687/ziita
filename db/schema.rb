@@ -37,11 +37,14 @@ ActiveRecord::Schema.define(version: 20141110143535) do
   end
 
   create_table "articles", force: true do |t|
+    t.integer  "account_id", null: false
     t.string   "title",      null: false
     t.text     "body",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "articles", ["account_id"], name: "index_articles_on_account_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "article_id", null: false
