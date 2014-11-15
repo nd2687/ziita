@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
   root 'top#index'
+  resource :session, only: [ :new, :create, :destroy ]
 
   namespace :admin do
     root 'top#index'
     resource :session, only: [ :new, :create, :destroy ]
   end
 
-  namespace :user do
-    root 'top#index'
-    resource :session, only: [ :new, :create, :destroy ]
-    resources :articles, only: [ :index, :show ] do
-      resources :comments
+  scope "/:identify_name" do
+    namespace :user, path: "" do
+      root 'top#index'
+      resource :session, only: [ :destroy ]
+      resources :articles, only: [ :index, :show ] do
+        resources :comments
+      end
+      resources :accounts
     end
-    resources :accounts
   end
 end

@@ -1,2 +1,8 @@
-<p>Top#index</p>
-<%= link_to 'User::Top', [ :user, :root ] %>
+<p>Ziita</p>
+
+<% if current_user %>
+  <%= link_to 'ログアウト', :session, method: :delete %>
+  <%= link_to 'user', user_root_path(identify_name: current_user.identify_name) %>
+<% else %>
+  <%= link_to 'ログイン', [ :new, :session ] %>
+<% end %>

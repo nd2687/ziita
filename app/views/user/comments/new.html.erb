@@ -1,16 +1,16 @@
-<p>User::Comments#new</p>
-<p><%= link_to '戻る', [ :user, @article ] %></p>
+<p><%= link_to '戻る', user_article_path(identify_name: current_user.identify_name, id: @article.id) %></p>
 
 <p>コメント追加フォーム<p>
-<%= form_for [ :user, @article, @comment ] do |f| %>
+<%= form_for @comment, url: user_article_comments_path(
+  identify_name: current_user.identify_name, article_id: @article.id) do |f| %>
   <p>
     <%= f.label :name, "名前" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, autofocus: true %>
   </p>
   <p>
-    <%= f.label :body, "本文" %>
+    <%= f.label :body, "本文" %><br>
     <%= error_message @comment %>
-    <%= f.text_field :body %>
+    <%= f.text_area :body, size: '50x10' %>
   </p>
   <p><%= f.submit "追加" %></p>
 <% end %>
