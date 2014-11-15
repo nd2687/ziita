@@ -1,0 +1,12 @@
+<p><%= link_to '戻る', [ :articles ] %></p>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <hr>
+
+    <li>
+      <p><%= comment.name %></p>
+      <p><%= comment.body %></p>
+    </li>
+  <% end %>
+</ul>
