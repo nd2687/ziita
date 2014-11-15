@@ -1,10 +1,10 @@
 class User::ArticlesController < User::Base
   def index
-    @articles = Article.all
+    @articles = current_user.articles
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = current_user.articles.find(params[:id])
     @comments = @article.comments
   end
 end

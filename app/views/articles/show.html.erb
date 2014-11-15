@@ -1,0 +1,21 @@
+<p><%= link_to '戻る', :articles %></p>
+
+<p>title:</p>
+<p><%= @article.title %></p>
+<hr>
+
+<p>body:</p>
+<p><%= @article.body %></p>
+<hr>
+
+<p>comments:</p>
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <p><%= comment.name %></p>
+      <p><%= comment.body %></p>
+    </li>
+  <% end %>
+</ul>
+<hr>
+<p><%= link_to 'コメントを追加', [ :new, @article, :comment ] %></p>
