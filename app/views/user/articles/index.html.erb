@@ -1,11 +1,10 @@
-<p>User::Articles#index</p>
 <p><%= link_to '戻る', [ :user, :root ] %></p>
 
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <%= link_to article.title, [ :user, article ] %>
-      <%= link_to "[#{article.comments.count}]", [ :user, article, :comments ] %>
+      <%= link_to article.title, user_article_path(identify_name: current_user.identify_name, id: article.id) %>
+      <%= link_to "[#{article.comments.count}]", user_article_comments_path(identify_name: current_user.identify_name, article_id: article.id) %>
     </li>
   <% end %>
 </ul>
