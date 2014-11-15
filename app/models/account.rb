@@ -21,6 +21,8 @@
 #
 
 class Account < ActiveRecord::Base
+  has_many :articles, dependent: :destroy
+
   attr_accessor :password, :password_confirmation, :setting_password
   alias_method :setting_password?, :setting_password
 

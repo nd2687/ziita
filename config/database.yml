@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  username: root
+  host: localhost
+
+development:
+  <<: *default
+  database: db/ziita_development
+
+test:
+  <<: *default
+  database: db/ziita_test
+
+production:
+  <<: *default
+  database: db/ziita_production
