@@ -1,0 +1,10 @@
+<p><%= link_to '戻る', :root %></p>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+      <%= link_to "[#{article.comments.count}]", [ article, :comments ] %>
+    </li>
+  <% end %>
+</ul>
