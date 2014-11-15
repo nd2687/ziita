@@ -1,4 +1,4 @@
-<%= link_to 'ログアウト', :session, method: :delete %>
-<p>Ziita</p>
+<h3><%= link_to 'Ziita', :root %> (アカウントページ)</h3>
+<%= link_to 'ログアウト', :session, method: :delete %><br>
 <%= link_to "Articles", [ :user, :articles ] %><br>
 <%= link_to "Accounts", user_account_path(identify_name: current_user.identify_name, id: current_user) %>
