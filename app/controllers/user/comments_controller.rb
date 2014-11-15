@@ -15,7 +15,7 @@ class User::CommentsController < User::Base
     @comment.name = "名無し" if @comment.name.empty?
     if @comment.save
       flash.notice = "コメントを追加しました！"
-      redirect_to [ :user, @article ]
+      redirect_to user_article_path(identify_name: current_user.identify_name, id: @article.id)
     else
       flash.now[:alert] = "コメントの追加に失敗しました。"
       render action: 'new'

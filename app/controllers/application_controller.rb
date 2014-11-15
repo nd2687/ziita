@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  layout 'user'
+
   private
   def current_admin
     if session[:current_admin_id]
@@ -30,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_account
     unless current_user
-      redirect_to [ :new, :user, :session ]
+      redirect_to [ :new, :session ]
     end
   end
 end
