@@ -1,10 +1,12 @@
 <p><%= link_to '戻る', :root %></p>
 
-<ul>
+<ul class="list-group">
   <% @articles.each do |article| %>
-    <li>
+    <li class="list-group-item">
       <%= link_to article.title, article %>
-      <%= link_to "[#{article.comments.count}]", [ article, :comments ] %>
+      <span class="badge">
+        <%= link_to "#{article.comments.count}", [ article, :comments ] %>
+      </span>
     </li>
   <% end %>
 </ul>

@@ -1,12 +1,13 @@
 <p><%= link_to '戻る', :articles %></p>
 
-<ul>
+<ul class="list-group">
   <% @comments.each do |comment| %>
-    <hr>
-
-    <li>
+    <li class="list-group-item">
       <p><%= comment.name %></p>
-      <p><%= comment.body %></p>
+      <%= comment.body %>
+      <p class="created">
+        <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </p>
     </li>
   <% end %>
 </ul>
