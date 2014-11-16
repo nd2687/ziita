@@ -2,11 +2,7 @@ class User::AccountsController < User::Base
   skip_before_action :authenticate_account
 
   def show
-    @account = Account.find_by(id: params[:id])
-    if @account == nil
-      raise ActionController::RoutingError,
-        "No routes matches #{request.path.inspect}"
-    end
+    @account = Account.find(params[:id])
   end
 
   def new

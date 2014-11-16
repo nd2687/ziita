@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   layout 'user'
 
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue404
   rescue_from ActionController::RoutingError, with: :rescue404
 
   private
