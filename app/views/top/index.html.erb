@@ -1,11 +1,3 @@
-<h3><%= link_to 'Ziita', :root %></h3>
-
-<% if current_user %>
-  <%= link_to 'ログアウト', :session, method: :delete %><br>
-  <%= link_to "#{current_user.identify_name} page", user_root_path(identify_name: current_user.identify_name) %>
-<% else %>
-  <%= link_to 'ログイン', [ :new, :session ] %>
-<% end %>
-
 <p>
-  <%= link_to 'Articles', :articles %></p>
+  <%= link_to 'Articles', :articles %>
+</p>
