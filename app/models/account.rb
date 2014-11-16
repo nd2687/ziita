@@ -26,6 +26,10 @@ class Account < ActiveRecord::Base
   attr_accessor :password, :password_confirmation, :setting_password
   alias_method :setting_password?, :setting_password
 
+  before_validation do
+    self.email_for_index = email.downcase if email
+  end
+
   before_save do
     if setting_password?
       self.password_digest = BCrypt::Password.create(password)
