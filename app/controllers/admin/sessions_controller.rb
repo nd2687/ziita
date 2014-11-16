@@ -1,5 +1,6 @@
 class Admin::SessionsController < Admin::Base
   skip_before_filter :authenticate_administrator
+  skip_before_action :presence_check_account
 
   layout 'admin_session'
 

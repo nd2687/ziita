@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :presence_check_account
+
   def new
   end
 

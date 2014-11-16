@@ -11,5 +11,7 @@
     <%= error_message @comment %>
     <%= f.text_area :body, size: '50x10' %>
   </p>
-  <p><%= f.submit "追加" %></p>
+  <div class="form-group">
+    <%= f.submit "追加", class: "btn btn-default" %>
+  </div>
 <% end %>
