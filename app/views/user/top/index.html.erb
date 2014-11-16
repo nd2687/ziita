@@ -1,3 +1,10 @@
 <h4><%= "#{actual_user.identify_name}さんのページです。" %></h4>
-<%= link_to "Articles", [ :user, :articles ] %><br>
-<%= link_to "Accounts", user_account_path(identify_name: actual_user.identify_name, id: actual_user.id) %>
+
+<ul class="nav nav-pills">
+  <li role="presentation" class="">
+    <%= link_to "Articles", [ :user, :articles ] %>
+  </li>
+  <li role="presentation" class="">
+    <%= link_to "Accounts", user_account_path(identify_name: actual_user.identify_name, id: actual_user.id) %>
+  </li>
+</ul>

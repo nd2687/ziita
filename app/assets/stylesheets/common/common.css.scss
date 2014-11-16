@@ -11,6 +11,7 @@
 
 body {
   text-align: center;
+  padding-top: 70px;
 }
 
 div#header {
@@ -26,10 +27,7 @@ div#content {
 #ziita {
   font-family: 'nicomoji', monospace;
   color: #FFF;
-}
-
-.badge a {
-  color: #FFF;
+  margin-right: 20px;
 }
 
 label.col-xs-2 {
@@ -55,4 +53,28 @@ label.col-xs-2 {
 
 ul.nav a:hover {
   color: #FFF !important;
+}
+
+.navbar-collapse.collapse {
+  display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important;
+}
+
+.navbar-right {
+  float: right!important;
+}
+.navbar-default {
+  height: 52px;
+  margin-top: -2px;
+}
+
+.badge a {
+  color: #FFF;
 }
