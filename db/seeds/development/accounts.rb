@@ -4,7 +4,6 @@ name.each do |name|
   account = Account.new(
     identify_name: name,
     email: "#{name}@example.com",
-    email_for_index: "#{name}@example.com",
     password: 'password',
     self_introduction: "RailsとRubyの勉強を頑張っています。#{name}と言います。よろしくです!",
     sites: 'http://hogehoge.jp',

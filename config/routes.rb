@@ -20,4 +20,6 @@ Rails.application.routes.draw do
       resources :accounts
     end
   end
+
+  get '*anything' => 'errors#routing_error'
 end
