@@ -4,12 +4,7 @@ class User::ArticlesController < User::Base
   end
 
   def show
-    @article = actual_user.articles.find_by(id: params[:id])
-    if @article
-      @comments = @article.comments
-    else
-      raise ActionController::RoutingError,
-        "No routes matches #{request.path.inspect}"
-    end
+    @article = actual_user.articles.find(params[:id])
+    @comments = @article.comments
   end
 end
