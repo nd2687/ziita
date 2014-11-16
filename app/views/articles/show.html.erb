@@ -1,12 +1,27 @@
 <p><%= link_to '戻る', :articles %></p>
 
+<hr>
+<p>記事を書いた人</p>
+<p>
+  <%= link_to @article.account.identify_name, user_account_path(
+    identify_name: @article.account.identify_name, id: @article.account.id) %>さん
+</p>
+
+<hr>
 <p>title:</p>
 <p><%= @article.title %></p>
-<hr>
 
+<hr>
 <p>body:</p>
 <p><%= @article.body %></p>
+
 <hr>
+<p>
+  <%= link_to @article.account.identify_name, user_account_path(
+    identify_name: @article.account.identify_name, id: @article.account.id) %>
+  has created in
+  <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
+</p>
 
 <p>comments:</p>
 <ul>
@@ -17,5 +32,6 @@
     </li>
   <% end %>
 </ul>
+
 <hr>
 <p><%= link_to 'コメントを追加', [ :new, @article, :comment ] %></p>
