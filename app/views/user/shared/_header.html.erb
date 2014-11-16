@@ -1,20 +1,22 @@
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  <ul class="nav navbar-nav">
-
-    <li><%= link_to "Ziita", :root, id: "ziita" %></li>
-    <% if current_user %>
-      <li>
-        <%= link_to 'ログアウト', :session, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "#{current_user.identify_name} page", user_root_path(
-          identify_name: current_user.identify_name) %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to 'ログイン', [ :new, :session ] %>
-      </li>
-    <% end %>
-
-  </ul>
+<div class="nav-header">
+  <%= link_to "Ziita", :root, id: "ziita", class: "navbar-brand" %>
 </div>
+
+<ul class="nav navbar-nav">
+  <% if current_user %>
+    <li>
+      <%= link_to 'ログアウト', :session, method: :delete %>
+    </li>
+    <li>
+      <%= link_to "#{current_user.identify_name} page", user_root_path(
+        identify_name: current_user.identify_name) %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to 'ログイン', [ :new, :session ] %>
+    </li>
+    <li>
+      <%= link_to "新規登録", '#' %>
+    </li>
+  <% end %>
+</ul>

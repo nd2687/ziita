@@ -8,27 +8,30 @@
 </p>
 
 <hr>
-<p>title:</p>
+<p>title</p>
 <p><%= @article.title %></p>
 
 <hr>
-<p>body:</p>
+<p>body</p>
 <p><%= @article.body %></p>
 
 <hr>
-<p>
+<p class="created">
   <%= link_to @article.account.identify_name, user_account_path(
     identify_name: @article.account.identify_name, id: @article.account.id) %>
   has created in
   <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
 </p>
 
-<p>comments:</p>
-<ul>
+<p>comments</p>
+<ul class="list-group">
   <% @comments.each do |comment| %>
-    <li>
+    <li class="list-group-item">
       <p><%= comment.name %></p>
-      <p><%= comment.body %></p>
+      <%= comment.body %>
+      <p class="created">
+        <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </p>
     </li>
   <% end %>
 </ul>
