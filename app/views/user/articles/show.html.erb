@@ -8,12 +8,10 @@
 </p>
 
 <hr>
-<p>title</p>
 <p><%= @article.title %></p>
 
 <hr>
-<p>body</p>
-<p><%= @article.body %></p>
+<p><%= markdown @article.body %></p>
 
 <hr>
 <p class="created">

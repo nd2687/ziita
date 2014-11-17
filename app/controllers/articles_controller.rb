@@ -14,7 +14,25 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def create
+    @article = Article.new(article_params)
+    @article.account = current_user
+    if @article.save
+      flash.notice = "新規記事を投稿しました。"
+      redirect_to user_articles_path(identify_name: current_user.identify_name)
+    else
+      flash.now[:alert] = "新規記事の投稿に失敗しました。"
+      render action: 'new'
+    end
+  end
+
   private
+  def article_params
+    params.require(:article).permit(
+      :title, :body
+    )
+  end
+
   def resolve_layout
     case action_name
     when "new", "edit"
