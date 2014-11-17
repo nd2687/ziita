@@ -14,3 +14,29 @@ div#container-fluid {
 .tweaked-margin {
   margin: 0 30px;
 }
+
+.preview-area {
+  width: 100%!important;
+  height: 500px!important;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.facebook {
+  color: #FFF;
+  background-color: #3B5998;
+  border-color: #6D84B4;
+}
+
+.leftline7 {
+  border-left-width: 2px;
+  border-left-style: solid;
+}
+
+.border {
+  margin: 0px 0px 20px;
+  padding: 7px 20px;
+}
