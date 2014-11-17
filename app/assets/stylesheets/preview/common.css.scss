@@ -1,0 +1,16 @@
+body {
+  text-align: center;
+  padding-top: 70px;
+  width: 100%;
+}
+
+div#container-fluid {
+  min-width: 900px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tweaked-margin {
+  margin: 0 30px;
+}

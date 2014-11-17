@@ -2,9 +2,9 @@
 
 <ul class="nav nav-pills">
   <li role="presentation" class="">
-    <%= link_to "Articles", [ :user, :articles ] %>
+    <%= link_to "投稿記事一覧", [ :user, :articles ] %>
   </li>
   <li role="presentation" class="">
-    <%= link_to "Accounts", user_account_path(identify_name: actual_user.identify_name, id: actual_user.id) %>
+    <%= link_to "アカウント情報", user_account_path(identify_name: actual_user.identify_name, id: actual_user.id) %>
   </li>
 </ul>
