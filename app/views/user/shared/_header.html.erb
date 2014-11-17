@@ -1,16 +1,29 @@
-<div class="nav-header">
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-menu-1">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
   <%= link_to "Ziita", :root, id: "ziita", class: "navbar-brand" %>
 </div>
 
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
+<div class="collapse navbar-collapse" id="nav-menu-1">
   <ul class="nav navbar-nav">
     <% if current_user %>
       <li>
         <%= link_to 'ログアウト', :session, method: :delete %>
       </li>
       <li>
-        <%= link_to "#{current_user.identify_name} page", user_root_path(
-          identify_name: current_user.identify_name) %>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My menu<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li>
+            <%= link_to "#{current_user.identify_name} page", user_root_path(
+              identify_name: current_user.identify_name) %>
+          </li>
+          <li><a href="#">Setting</a></li>
+        </ul>
       </li>
     <% else %>
       <li>
