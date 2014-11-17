@@ -1,0 +1,23 @@
+<%= form_for :articles, method: 'post' do |f| %>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <div class="col-xs-8 col-xs-offset-1">
+        <%= f.text_field :title, placeholder: "タイトル", autofocus: true, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row tweaked-margin">
+      <p style="border: 1px solid #F00; width:50%; height:40px; text-align:center"
+        class="col-xs-5 tweaked-margin-left">入力</p>
+      <p style="border: 1px solid #F00; width:50%; height:40px; text-align:center"
+        class="col-xs-5">プレビュー</p>
+  </div>
+
+  <div class="row tweaked-margin">
+      <p style="border: 1px solid #F00; width:50%; height:500px; text-align:center"
+        class="col-xs-6 tweaked-margin-left">入力</p>
+      <p style="border: 1px solid #F00; width:50%; height:500px; text-align:center"
+        class="col-xs-6">プレビュー</p>
+  </div>
+<% end %>
