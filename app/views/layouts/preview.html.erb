@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ziita</title>
+    <%= stylesheet_link_tag 'preview', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'preview', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <div id="header">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <%= render 'user/shared/header' %>
+        </div>
+      </nav>
+    </div>
+
+    <div id="container-fluid">
+      <div class="row">
+        <%= flash_messages %>
+        <%= yield %>
+      </div>
+    </div>
+
+  </body>
+</html>
