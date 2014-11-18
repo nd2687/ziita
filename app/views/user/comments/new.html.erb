@@ -5,11 +5,12 @@
   identify_name: actual_user.identify_name, article_id: @article.id) do |f| %>
   <p>
     <%= f.label :name, "名前" %>
+    <%= error_message(@comment, :name) %>
     <%= f.text_field :name, autofocus: true %>
   </p>
   <p>
-    <%= f.label :body, "本文" %><br>
-    <%= error_message @comment %>
+    <%= f.label :body, "本文" %>
+    <%= error_message(@comment, :body) %>
     <%= f.text_area :body, size: '50x10' %>
   </p>
   <div class="form-group">
