@@ -3,7 +3,7 @@
   src: font-url('VeraMono.ttf');
 }
 
-.navbar-default {
+.navbar-fixed-top {
   //background-color: #272727;
   background: #4c4c4c; /* Old browsers */
   background: -moz-linear-gradient(left, #4c4c4c 0%, #2c2c2c 0%, #595959 12%, #666666 25%, #474747 39%, #1c1c1c 100%, #2b2b2b 100%, #000000 100%, #111111 100%, #2c2c2c 100%, #131313 100%); /* FF3.6+ */
@@ -31,4 +31,12 @@ label.col-xs-2 {
 
 .article-wrap {
   word-wrap: break-word;
+}
+
+.footer, .push {
+  height: 155px;
+}
+
+.footer {
+  border-top: solid 1px;
 }

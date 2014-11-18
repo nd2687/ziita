@@ -12,19 +12,32 @@
 body {
   text-align: center;
   padding-top: 70px;
-  padding-bottom: 200px;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 100%;
 }
 
-div#content {
-  width: 800px;
+html {
+  height: 100%;
+}
+
+.page-content-wrapper {
+  width: 100%;
+  padding: 15px;
   margin: 0 auto;
   text-align: left;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -155px;
 }
 
 label.col-xs-2 {
   margin-top: 7px;
 }
 
-.badge a {
-  color: #FFF;
+.badge {
+  > a {
+    color: #FFF;
+  }
 }
