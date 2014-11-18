@@ -1,0 +1,49 @@
+<%= form_for @account, url: user_account_path(
+  identify_name: current_user.identify_name, id: current_user.id) do |f| %>
+
+  <div class="form-horizontal">
+    <div class="form-group">
+      <%= f.label :email_publication, "メールアドレスを公開", class: 'col-xs-4' %>
+      <div class="col-xs-8">
+        <%= f.check_box :email_publication %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :self_introduction, "自己紹介", class: 'col-xs-4' %>
+      <div class="col-xs-8">
+        <%= f.text_area :self_introduction, class: 'self-introduction-area' %>
+        <%= error_message(@account, :self_introduction) %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :sites, "サイトURL", class: 'col-xs-4' %>
+      <div class="col-xs-8">
+        <%= f.text_field :sites %>
+        <%= error_message(@account, :sites) %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :company, "会社・所属団体等", class: 'col-xs-4' %>
+      <div class="col-xs-8">
+        <%= f.text_field :company %>
+        <%= error_message(@account, :company) %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :residence, "地域", class: 'col-xs-4' %>
+      <div class="col-xs-8">
+        <%= f.text_field :residence %>
+        <%= error_message(@account, :residence) %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "更新", class: "btn btn-default col-xs-offset-5" %>
+    </div>
+  </div>
+
+<% end %>
