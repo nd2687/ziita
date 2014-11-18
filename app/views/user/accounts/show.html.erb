@@ -1,8 +1,12 @@
 <p>id</p>
 <p><%= @account.identify_name %></p><br>
 
-<p>email</p>
-<p><%= @account.email %></p><br>
+<% if @account == current_user || @account.email_publication == true %>
+  <p>email</p>
+  <p><%= @account.email %></p><br>
+  <p>email公開</p>
+  <p><%= @account.email_publication %></p><br>
+<% end %>
 
 <p>紹介文</p>
 <p><%= @account.self_introduction %></p><br>
@@ -15,3 +19,8 @@
 
 <p>Residence</p>
 <p><%= @account.residence %></p>
+
+<% if @account == current_user %>
+<p><%= link_to "編集", edit_user_account_path(
+  identify_name: current_user.identify_name, id: current_user.id) %></p>
+<% end %>

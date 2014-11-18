@@ -10,7 +10,7 @@
   <p>
     <%= f.label :body, "本文" %>
     <%= error_message(@comment, :body) %>
-    <%= f.text_area :body, size: '50x10' %>
+    <%= f.text_area :body, class: 'comment-area' %>
   </p>
   <div class="form-group">
     <%= f.submit "追加", class: "btn btn-default" %>
