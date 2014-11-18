@@ -1,11 +1,24 @@
 ja:
   activerecord:
     attributes:
+      article:
+        title: タイトル
+        body: 本文
       comment:
+        name: 名前
         body: 本文
     errors:
       models:
+        article:
+          attributes:
+            title:
+              blank: を入力してください。
+              too_long: は32文字以内にしてください。
+            body:
+              blank: を入力してください。
         comment:
           attributes:
+            name:
+              too_long: は16文字以内にしてください。
             body:
               blank: を入力してください。
