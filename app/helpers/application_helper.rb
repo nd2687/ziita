@@ -8,10 +8,18 @@ module ApplicationHelper
     end
   end
 
-  def error_message(model)
+  def error_message(model, attribute = nil)
     text = raw('')
-    model.errors.full_messages.each do |msg|
+    return '' if model.errors.empty?
+
+    if attribute.present?
+      model.errors.full_messages_for(attribute).each do |msg|
        text << content_tag(:p, msg, style: "color: red;")
+      end
+    else
+      model.errors.full_messages.each do |msg|
+        text << content_tag(:p, msg, style: "color: red;")
+      end
     end
     text
   end

@@ -3,17 +3,21 @@
     <div class="form-group">
       <div class="col-xs-8 col-xs-offset-2">
         <%= f.text_field :title, placeholder: "タイトル", autofocus: true, class: 'form-control' %>
+        <%= error_message(@article, :title) %>
       </div>
     </div>
   </div>
 
   <div class="row tweaked-margin">
+    <%= error_message(@article, :body) %>
+
     <!--
       <p style="border: 1px solid #F00; width:50%; height:40px; text-align:center"
         class="col-xs-5">入力</p>
       <p style="border: 1px solid #F00; width:50%; height:40px; text-align:center"
         class="col-xs-5">プレビュー</p>
       -->
+
     <h3 style="width:50%; height:40px; text-align:center"
       class="col-xs-5 border facebook leftline7">入力</h3>
     <h3 style="width:50%; height:40px; text-align:center"
@@ -21,6 +25,7 @@
   </div>
 
   <div class="row tweaked-margin">
+
     <!--
     <p style="border: 1px solid #F00; width:50%; height:500px; text-align:center"
       class="col-xs-6">入力</p>
