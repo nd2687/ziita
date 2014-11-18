@@ -16,15 +16,20 @@
       </nav>
     </div>
 
-    <div id="content">
-      <div id="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <%= flash_messages %>
-            <%= yield %>
-          </div>
+    <div class="page-content-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <%= flash_messages %>
+          <%= yield %>
         </div>
       </div>
+      <div class="push"></div>
+    </div>
+
+    <div class="footer">
+      <p class="text-muted credit">
+        <%= render 'user/shared/footer' %>
+      </p>
     </div>
 
   </body>
