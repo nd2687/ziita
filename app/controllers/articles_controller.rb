@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
       redirect_to user_articles_path(identify_name: current_user.identify_name)
     else
       flash.now[:alert] = "新規記事の投稿に失敗しました。"
-      render action: 'new'
+      render action: 'new', layout: 'preview'
     end
   end
 
