@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    attributes:
+      account:
+        self_introduction: 自己紹介
+        sites: サイトURL
+        company: 会社、所属団体等
+        residence: 地域
+    errors:
+      models:
+        account:
+          attributes:
+            self_introduction:
+              blank: を入力してください。
+            sites:
+              invalid: は入力値が不正です。
+            company:
+              too_long: は32文字以内にしてください。
+            residence:
+              too_long: は32文字以内にしてください。
