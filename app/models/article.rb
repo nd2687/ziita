@@ -18,6 +18,7 @@ class Article < ActiveRecord::Base
   belongs_to :account
   has_many :comments
 
-  validates :title, presence: true
+  validates :title, presence: true,
+                    length: { maximum: 32 }
   validates :body, presence: true
 end

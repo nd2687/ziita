@@ -17,5 +17,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :article
 
+  validates :name, length: { maximum: 16 }
   validates :body, presence: true
 end
