@@ -1,6 +1,7 @@
 body {
   text-align: center;
   padding-top: 70px;
+  padding-bottom: 200px;
   width: 100%;
 }
 
@@ -17,7 +18,14 @@ div#container-fluid {
 
 .preview-area {
   width: 100%!important;
-  height: 500px!important;
+  height: 700px!important;
+  border: solid 0.2em;
+  border-color: #6D84B4;
+  padding: 10px;
+}
+
+.pre-scrollable {
+  max-height: 700px!important;
 }
 
 pre {
@@ -39,4 +47,18 @@ pre {
 .border {
   margin: 0px 0px 20px;
   padding: 7px 20px;
+}
+
+.article-submit {
+  margin-top: 20px;
+  > .btn {
+    color: #FFF;
+    background-color: #3B5998;
+    border-color: #6D84B4;
+  }
+}
+
+.alert {
+  width: 80%;
+  margin: 30px auto;
 }

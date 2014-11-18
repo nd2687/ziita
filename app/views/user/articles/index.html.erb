@@ -2,7 +2,7 @@
 
 <ul class="list-group">
   <% @articles.each do |article| %>
-    <li class="list-group-item">
+    <li class="list-group-item article-wrap">
       <%= link_to article.title, user_article_path(identify_name: actual_user.identify_name, id: article.id) %>
       <span class="badge">
         <%= link_to "#{article.comments.count}", user_article_comments_path(

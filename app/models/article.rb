@@ -17,4 +17,7 @@
 class Article < ActiveRecord::Base
   belongs_to :account
   has_many :comments
+
+  validates :title, presence: true
+  validates :body, presence: true
 end
