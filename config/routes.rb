@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'top#index'
   resource :session, only: [ :new, :create, :destroy ]
-  resources :articles do
+  resources :articles, only: [ :index, :show ] do
     resources :comments
   end
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     namespace :user, path: "" do
       root 'top#index'
       resource :session, only: [ :destroy ]
-      resources :articles, only: [ :index, :show ] do
+      resources :articles do
         resources :comments
       end
       resources :accounts
