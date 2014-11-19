@@ -11,7 +11,9 @@
 <p class="article-wrap"><%= @article.title %></p>
 
 <hr>
-<div class="article-wrap"><%= markdown @article.body %></div>
+<div class="article-wrap">
+  <%= markdown @article.body %>
+</div>
 
 <hr>
 <p class="created">
@@ -19,6 +21,10 @@
     identify_name: @article.account.identify_name, id: @article.account.id) %>
   has created in
   <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
+  <% if current_user && @article.account == current_user %>
+    : <%= link_to '記事を編集する', edit_user_article_path(
+            identify_name: current_user.identify_name, id: @article) %>
+  <% end %>
 </p>
 
 <p>comments</p>

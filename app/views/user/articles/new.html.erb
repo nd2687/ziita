@@ -1,4 +1,5 @@
-<%= form_for @article, url: :articles do |f| %>
+<%= form_for @article, url: user_articles_path(identify_name: current_user.identify_name),
+      method: :post do |f| %>
   <div class="form-horizontal">
     <div class="form-group">
       <div class="col-xs-8 col-xs-offset-2">
@@ -11,13 +12,6 @@
   <div class="row tweaked-margin">
     <%= error_message(@article, :body) %>
 
-    <!--
-      <p style="border: 1px solid #F00; width:50%; height:40px; text-align:center"
-        class="col-xs-5">入力</p>
-      <p style="border: 1px solid #F00; width:50%; height:40px; text-align:center"
-        class="col-xs-5">プレビュー</p>
-      -->
-
     <h3 style="width:50%; height:40px; text-align:center"
       class="col-xs-5 border facebook leftline7">入力</h3>
     <h3 style="width:50%; height:40px; text-align:center"
@@ -25,20 +19,9 @@
   </div>
 
   <div class="row tweaked-margin">
-
-    <!--
-    <p style="border: 1px solid #F00; width:50%; height:500px; text-align:center"
-      class="col-xs-6">入力</p>
-    -->
-
     <div class="col-xs-6">
       <%= f.text_area :body, placeholder: '本文', class: 'form-control preview-area' %>
     </div>
-
-    <!--
-    <p style="border: 1px solid #F00; width:50%; height:500px; text-align:center"
-      class="col-xs-6">プレビュー</p>
-    -->
 
     <div class="col-xs-6 preview">
       <div id="result" class="preview-area pre-scrollable article-wrap"></div>
