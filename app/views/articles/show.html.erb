@@ -11,7 +11,12 @@
 <p class="article-wrap"><%= @article.title %></p>
 
 <hr>
-<div class="article-wrap"><%= markdown @article.body %></div>
+<div class="article-wrap">
+  <%= markdown @article.body %>
+  <% if current_user && @article.account == current_user %>
+    <%= link_to '編集', [ :edit, @article ] %>
+  <% end %>
+</div>
 
 <hr>
 <p class="created">

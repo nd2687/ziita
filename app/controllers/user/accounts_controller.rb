@@ -4,6 +4,9 @@ class User::AccountsController < User::Base
 
   def show
     @account = Account.find(params[:id])
+    if @account != actual_user
+      redirect_to user_account_path(identify_name: @account.identify_name, id: @account)
+    end
   end
 
   def new
@@ -47,7 +50,7 @@ class User::AccountsController < User::Base
   def check_current_user
     @account = Account.find_by(identify_name: params[:identify_name])
     if @account != current_user
-      flash.alert = "他人のユーザー情報編集はできません。"
+      flash.alert = "他ユーザーの情報編集はできません。"
       redirect_to :root
     end
   end

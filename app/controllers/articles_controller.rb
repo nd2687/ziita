@@ -26,6 +26,26 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    @article.assign_attributes(article_params())
+    @article.account = current_user
+    if @article.save
+      flash.notice = "記事を更新しました。"
+      redirect_to user_article_path(identify_name: current_user.identify_name, id: @article)
+    else
+      flash.now[:alert] = "記事の更新に失敗しました。"
+      render action: "edit", layout: 'preview'
+    end
+  end
+
+  def destroy
+  end
+
   private
   def article_params
     params.require(:article).permit(
