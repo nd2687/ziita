@@ -12,6 +12,7 @@ class User::CommentsController < User::Base
   def create
     @comment = Comment.new(comment_params)
     @comment.article = @article
+    @comment.name = current_user.identify_name if @article.account == current_user
     @comment.name = "名無し" if @comment.name.empty?
     if @comment.save
       flash.notice = "コメントを追加しました！"
