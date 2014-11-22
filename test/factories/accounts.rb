@@ -8,7 +8,7 @@
 #  email_for_index   :string(255)      not null
 #  email_publication :boolean          default(FALSE), not null
 #  password_digest   :string(255)      not null
-#  self_introduction :string(255)      not null
+#  self_introduction :text             not null
 #  sites             :string(255)
 #  company           :string(255)
 #  residence         :string(255)

@@ -12,6 +12,7 @@ ja:
           attributes:
             self_introduction:
               blank: を入力してください。
+              too_long: は1000文字以内にしてください。
             sites:
               invalid: は入力値が不正です。
             company:

@@ -8,7 +8,7 @@
 #  email_for_index   :string(255)      not null
 #  email_publication :boolean          default(FALSE), not null
 #  password_digest   :string(255)      not null
-#  self_introduction :string(255)      not null
+#  self_introduction :text             not null
 #  sites             :string(255)
 #  company           :string(255)
 #  residence         :string(255)
@@ -26,7 +26,7 @@ class Account < ActiveRecord::Base
   attr_accessor :password, :password_confirmation, :setting_password
   alias_method :setting_password?, :setting_password
 
-  validates :self_introduction, presence: true
+  validates :self_introduction, presence: true, length: { maximum: 1000 }
   validates :sites, format: { with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix,
                               allow_blank: true }
   validates :company, length: { maximum: 32, allow_blank: true }
