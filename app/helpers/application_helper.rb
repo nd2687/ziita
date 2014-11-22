@@ -28,4 +28,10 @@ module ApplicationHelper
     text = html_escape(text)
     text.gsub(/\r\n|\r|\n/, "<br />").html_safe
   end
+
+  def page_title
+    title = "Ziita"
+    title = @page_title + " - " + title if @page_title
+    title
+  end
 end
