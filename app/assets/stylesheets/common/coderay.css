@@ -1,15 +1,16 @@
 .CodeRay {
   background-color: hsl(0,0%,95%);
-  border: 1px solid silver;
   color: black;
 }
 code {
   background-color: hsl(0,0%,95%);
   color: black;
   font-family: 'vera-mono';
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
-.CodeRay pre {
-  margin: 0px;
+.CodeRay > pre {
+  margin: 0px 0px 10px;
   padding: 10px;
   font-family: 'vera-mono';
 }
