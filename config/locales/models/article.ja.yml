@@ -13,7 +13,7 @@ ja:
           attributes:
             title:
               blank: を入力してください。
-              too_long: は32文字以内にしてください。
+              too_long: は64文字以内にしてください。
             body:
               blank: を入力してください。
         comment:

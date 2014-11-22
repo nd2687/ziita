@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141110143535) do
     t.string   "email_for_index",                   null: false
     t.boolean  "email_publication", default: false, null: false
     t.string   "password_digest",                   null: false
-    t.string   "self_introduction",                 null: false
+    t.text     "self_introduction",                 null: false
     t.string   "sites"
     t.string   "company"
     t.string   "residence"

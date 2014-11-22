@@ -19,6 +19,6 @@ class Article < ActiveRecord::Base
   has_many :comments
 
   validates :title, presence: true,
-                    length: { maximum: 32 }
+                    length: { maximum: 64 }
   validates :body, presence: true
 end

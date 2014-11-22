@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :email_for_index,    null: false
       t.boolean :email_publication, null: false, default: false
       t.string :password_digest,    null: false
-      t.string :self_introduction,  null: false
+      t.text :self_introduction,    null: false
       t.string :sites
       t.string :company
       t.string :residence
