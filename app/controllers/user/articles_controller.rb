@@ -4,7 +4,7 @@ class User::ArticlesController < User::Base
   layout :resolve_layout
 
   def index
-    @articles = actual_user.articles
+    @articles = actual_user.articles.order(created_at: :desc)
   end
 
   def show
