@@ -17,13 +17,14 @@
         <%= link_to '記事を投稿する', new_user_article_path(identify_name: current_user.identify_name) %>
       </li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My menu<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">メニュー<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li>
             <%= link_to "#{current_user.identify_name} page", user_root_path(
               identify_name: current_user.identify_name) %>
           </li>
-          <li><a href="#">Setting</a></li>
+          <li><%= link_to "設定", settings_user_account_path(
+                    identify_name: current_user.identify_name, id: current_user) %></li>
         </ul>
       </li>
     <% else %>

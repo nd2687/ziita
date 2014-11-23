@@ -17,7 +17,13 @@ Rails.application.routes.draw do
       resources :articles do
         resources :comments
       end
-      resources :accounts
+      resources :accounts, except: [ :destroy ] do
+        member do
+          get :settings
+          get :edit_password
+          patch :update_password
+        end
+      end
     end
   end
 
