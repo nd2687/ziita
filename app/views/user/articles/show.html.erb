@@ -10,7 +10,9 @@
 </p>
 
 <hr>
+<div class="article-title">
 <p class="article-wrap h3"><%= @article.title %></p>
+</div>
 
 <hr>
 <div class="article-wrap">
@@ -34,7 +36,7 @@
   <% @comments.each do |comment| %>
     <li class="list-group-item">
       <p><%= comment.name %></p>
-      <%= comment.body %>
+      <%= hbr comment.body %>
       <p class="created">
         <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
       </p>
