@@ -34,10 +34,10 @@ group :development do
   gem 'pry', '~> 0.10.1'
   gem 'pry-rails', '~> 0.3.2'
   gem 'pry-byebug', '~> 2.0.0'
-  gem 'capistrano', '~> 3.2.1'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-bundler', '~> 1.1'
-  gem 'capistrano3-unicorn', '~> 0.2.1'
+  gem 'capistrano', '~> 3.2.1', require: false
+  gem 'capistrano-rails', '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano3-unicorn', '~> 0.2.1', require: false
 end
 
 group :production do
