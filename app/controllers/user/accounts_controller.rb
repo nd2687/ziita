@@ -1,6 +1,6 @@
 class User::AccountsController < User::Base
   skip_before_action :authenticate_account
-  before_action :check_current_user, only: [ :edit, :update ]
+  before_action :check_current_user, only: [ :edit, :update, :edit_password, :update_password ]
 
   def show
     @account = Account.find(params[:id])
@@ -33,6 +33,23 @@ class User::AccountsController < User::Base
     end
   end
 
+  def edit_password
+    @change_password_form = ChangePasswordForm.new(object: current_user)
+  end
+
+  def update_password
+    @change_password_form = ChangePasswordForm.new(password_params)
+    @change_password_form.object = current_user
+    if @change_password_form.save
+      flash.notice = "パスワードを変更しました。"
+      redirect_to settings_user_account_path(
+        identify_name: current_user.identify_name, id: current_user)
+    else
+      flash.now[:alert] = "パスワードの変更に失敗しました。"
+      render action: 'edit_password'
+    end
+  end
+
   private
   def new_account_params
     params.require(:account).permit(
@@ -44,6 +61,12 @@ class User::AccountsController < User::Base
     params.require(:account).permit(
       :email_publication, :self_introduction, :sites,
       :company, :residence
+    )
+  end
+
+  def password_params
+    params.require(:change_password_form).permit(
+      :new_password, :new_password_confirmation
     )
   end
 

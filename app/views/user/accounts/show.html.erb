@@ -7,24 +7,24 @@
   </tr>
   <% if @account == current_user || @account.email_publication == true %>
   <tr class="mail-link">
-    <td>email</td>
+    <td>メールアドレス</td>
     <td><%= mail_to @account.email %> <%= @account.email_publication %></td>
   </tr>
   <% end %>
   <tr>
-    <td>web site</td>
+    <td>サイトURL</td>
     <td><%= @account.sites %></td>
   </tr>
   <tr>
-    <td>company</td>
+    <td>会社・所属団体等</td>
     <td><%= @account.company %></td>
   </tr>
   <tr>
-   <td>residence</td>
+   <td>地域</td>
    <td><%= @account.residence %></td>
   </tr>
   <tr>
-    <td>Self-introduction</td>
+    <td>自己紹介</td>
     <td><%= hbr @account.self_introduction %></td>
   </tr>
 </table>

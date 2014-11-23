@@ -1,0 +1,10 @@
+<% @page_title =  "設定 #{current_user.identify_name}" %>
+
+<h4>設定</h4>
+
+<ul class="nav nav-pills">
+  <li role="presentation" class="">
+    <%= link_to "パスワードの変更", edit_password_user_account_path(
+          identify_name: current_user.identify_name, id: current_user) %>
+  </li>
+</ul>
