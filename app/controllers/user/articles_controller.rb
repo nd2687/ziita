@@ -46,6 +46,14 @@ class User::ArticlesController < User::Base
   end
 
   def destroy
+    @article = Article.find(params[:id])
+    if @article.destroy
+      flash.notice = "記事を削除しました。"
+      redirect_to user_articles_path(identify_name: current_user.identify_name)
+    else
+      flash.now[:alert] = "記事の削除に失敗しました。"
+      redirect_to :back
+    end
   end
 
   private
