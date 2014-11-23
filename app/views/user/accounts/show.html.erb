@@ -6,9 +6,9 @@
     <td><%= @account.identify_name %></td>
   </tr>
   <% if @account == current_user || @account.email_publication == true %>
-  <tr>
+  <tr class="mail-link">
     <td>email</td>
-    <td><%= @account.email %> <%= @account.email_publication %></td>
+    <td><%= mail_to @account.email %> <%= @account.email_publication %></td>
   </tr>
   <% end %>
   <tr>

@@ -1,6 +1,4 @@
 module MarkdownHelper
-  include HtmlBuilder
-
   class SyntaxHighlight < Redcarpet::Render::HTML
     def block_code(code, language)
       language ||= :plaintext
