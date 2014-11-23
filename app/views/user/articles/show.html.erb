@@ -27,7 +27,9 @@
   <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
   <% if current_user && @article.account == current_user %>
     : <%= link_to '記事を編集する', edit_user_article_path(
-            identify_name: current_user.identify_name, id: @article) %>
+            identify_name: current_user.identify_name, id: @article) %><br>
+      <%= link_to "削除", user_article_path(identify_name: current_user.identify_name, id: @article),
+            method: :delete, data: { confirm: "本当に削除しますか？" } %>
   <% end %>
 </p>
 
