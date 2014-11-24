@@ -6,14 +6,10 @@ body {
 }
 
 .page-content-wrapper {
-  min-width: 800px;
+  min-width: 780px;
   max-width: 100%;
   margin: 0 auto;
   text-align: left;
-}
-
-.tweaked-margin {
-  margin: 0 30px;
 }
 
 .preview-area {
@@ -26,6 +22,14 @@ body {
 
 .pre-scrollable {
   max-height: 700px!important;
+}
+
+.row {
+  margin: 0 15px;
+}
+
+.main-field, .tweaked-margin {
+  margin: 0;
 }
 
 pre {
@@ -61,4 +65,10 @@ pre {
 .alert {
   width: 80%;
   margin: 30px auto;
+}
+
+.preview-head {
+  width: 50%;
+  height: 40px;
+  text-align: center;
 }
