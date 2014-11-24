@@ -19,7 +19,9 @@ gem 'nokogiri', '~> 1.6.3'
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
 
+gem 'acts-as-taggable-on', '~> 3.4'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.4.1'

@@ -27,6 +27,14 @@
           <%= error_message(@article, :title) %>
         </div>
       </div>
+      <div class="form-group">
+        <%= f.label :tag_list, 'タグ (半角コロン[, ]で複数設定できます)',
+          class: "col-xs-2 col-xs-offset-2" %>
+        <div class="col-xs-7">
+          <%= f.text_field :tag_list, placeholder: "タグ", class: 'form-control' %>
+          <%= error_message(@article, :tag_list) %>
+        </div>
+      </div>
     </div>
 
     <div class="col-xs-offset-1 article-submit">
