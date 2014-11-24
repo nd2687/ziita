@@ -20,7 +20,7 @@
     <div class="form-group">
       <%= f.label :sites, "サイトURL", class: 'col-xs-4' %>
       <div class="col-xs-8">
-        <%= f.text_field :sites %>
+        <%= f.text_field :sites, class: "form-control" %>
         <%= error_message(@account, :sites) %>
       </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="form-group">
       <%= f.label :company, "会社・所属団体等", class: 'col-xs-4' %>
       <div class="col-xs-8">
-        <%= f.text_field :company %>
+        <%= f.text_field :company, class: "form-control" %>
         <%= error_message(@account, :company) %>
       </div>
     </div>
@@ -36,13 +36,13 @@
     <div class="form-group">
       <%= f.label :residence, "地域", class: 'col-xs-4' %>
       <div class="col-xs-8">
-        <%= f.text_field :residence %>
+        <%= f.text_field :residence, class: "form-control" %>
         <%= error_message(@account, :residence) %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.submit "更新", class: "btn btn-default col-xs-offset-5" %>
+      <%= f.submit "更新", class: "btn btn-default col-xs-offset-4 col-xs-4" %>
     </div>
   </div>
 
