@@ -14,5 +14,12 @@ $(function() {
           hljs.highlightBlock(block);
       });
     });
+
+    var preview = $('#result');
+    var input = $('#article_body');
+
+    preview.scroll(function(){
+      input.scrollTop(preview.scrollTop());
+    });
   };
 });
