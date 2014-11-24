@@ -1,6 +1,6 @@
 class User::AccountsController < User::Base
   skip_before_action :authenticate_account
-  before_action :check_current_user, only: [ :edit, :update, :edit_password, :update_password ]
+  before_action :check_current_user, except: [ :show ]
 
   def show
     @account = Account.find(params[:id])
@@ -48,6 +48,9 @@ class User::AccountsController < User::Base
       flash.now[:alert] = "パスワードの変更に失敗しました。"
       render action: 'edit_password'
     end
+  end
+
+  def settings
   end
 
   private
