@@ -3,8 +3,12 @@
 <h4>設定</h4>
 
 <ul class="nav nav-pills">
-  <li role="presentation" class="">
+  <li role="presentation">
     <%= link_to "パスワードの変更", edit_password_user_account_path(
           identify_name: current_user.identify_name, id: current_user) %>
+  </li>
+  <li role="presentation">
+    <%= link_to "アカウント情報の変更", edit_user_account_path(
+          identify_name: current_user.identify_name, id: current_user.id) %>
   </li>
 </ul>
