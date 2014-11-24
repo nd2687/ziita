@@ -14,7 +14,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'bcrypt', '~> 3.1.7'
-gem 'factory_girl_rails', '~> 4.4.1'
 gem 'nokogiri', '~> 1.6.3'
 
 gem 'redcarpet', '~> 2.3.0'
@@ -25,6 +24,7 @@ group :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.4.1'
   gem 'launchy'
+  gem 'factory_girl_rails', '~> 4.4.1'
 end
 
 group :development do
