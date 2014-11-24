@@ -20,9 +20,12 @@
 #  index_accounts_on_identify_name_and_email_for_index  (identify_name,email_for_index) UNIQUE
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :account do
+    identify_name 'taro'
+    password 'password'
+    email 'taro@example.com'
+    self_introduction 'テストです'
+    setting_password true
   end
 end
