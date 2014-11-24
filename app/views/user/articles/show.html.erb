@@ -13,6 +13,9 @@
 <div class="article-title">
 <p class="article-wrap h3"><%= @article.title %></p>
 </div>
+<div class="right-elm">
+  <%= user_tag_link @article.tag_list %>
+</div>
 
 <hr>
 <div class="article-wrap">
@@ -20,26 +23,26 @@
 </div>
 
 <hr>
-<p class="created">
+<p class="right-elm">
   <%= link_to @article.account.identify_name, user_account_path(
     identify_name: @article.account.identify_name, id: @article.account.id) %>
-  has created in
+  作成日時
   <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
   <% if current_user && @article.account == current_user %>
-    : <%= link_to '記事を編集する', edit_user_article_path(
-            identify_name: current_user.identify_name, id: @article) %><br>
-      <%= link_to "削除", user_article_path(identify_name: current_user.identify_name, id: @article),
-            method: :delete, data: { confirm: "本当に削除しますか？" } %>
+    <%= link_to '記事編集', edit_user_article_path(
+          identify_name: current_user.identify_name, id: @article) %><br>
+    <%= link_to "削除", user_article_path(identify_name: current_user.identify_name, id: @article),
+          method: :delete, data: { confirm: "本当に削除しますか？" } %>
   <% end %>
 </p>
 
-<p>comments</p>
+<p>コメント</p>
 <ul class="list-group">
   <% @comments.each do |comment| %>
     <li class="list-group-item">
       <p><%= comment.name %></p>
       <%= hbr comment.body %>
-      <p class="created">
+      <p class="right-elm">
         <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
       </p>
     </li>

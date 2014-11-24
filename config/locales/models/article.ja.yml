@@ -4,6 +4,7 @@ ja:
       article:
         title: タイトル
         body: 本文
+        tag_list: タグ
       comment:
         name: 名前
         body: 本文
@@ -16,6 +17,9 @@ ja:
               too_long: は64文字以内にしてください。
             body:
               blank: を入力してください。
+            tag_list:
+              too_long: は32文字以内にしてください。
+              format: はアルファベットで入力してください。
         comment:
           attributes:
             name:

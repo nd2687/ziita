@@ -1,6 +1,6 @@
 <% @page_title = actual_user.identify_name %>
 
-<p><%= link_to '戻る', [ :user, :root ] %></p>
+<p><%= link_to "#{actual_user.identify_name}さんのトップへ", [ :user, :root ] %></p>
 
 <ul class="list-group">
   <% @articles.each do |article| %>
