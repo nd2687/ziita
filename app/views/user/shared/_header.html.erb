@@ -20,7 +20,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">マイメニュー<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li>
-            <%= link_to "#{current_user.identify_name} page", user_root_path(
+            <%= link_to "#{current_user.identify_name} ページ", user_root_path(
               identify_name: current_user.identify_name) %>
           </li>
           <li><%= link_to "設定", settings_user_account_path(

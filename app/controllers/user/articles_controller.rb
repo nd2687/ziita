@@ -4,7 +4,11 @@ class User::ArticlesController < User::Base
   layout :resolve_layout
 
   def index
-    @articles = actual_user.articles.order(created_at: :desc)
+    if params[:tag]
+      @articles = actual_user.articles.tagged_with(params[:tag]).order(created_at: :desc)
+    else
+      @articles = actual_user.articles.order(created_at: :desc)
+    end
   end
 
   def show
@@ -59,7 +63,7 @@ class User::ArticlesController < User::Base
   private
   def article_params
     params.require(:article).permit(
-      :title, :body
+      :title, :body, :tag_list
     )
   end
 

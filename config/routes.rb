@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root 'top#index'
+
   resource :session, only: [ :new, :create, :destroy ]
   resources :articles, only: [ :index, :show ] do
+    collection do
+      get 'tag/:tag', to: 'articles#index', as: :tag
+    end
     resources :comments
   end
 
@@ -15,6 +19,9 @@ Rails.application.routes.draw do
       root 'top#index'
       resource :session, only: [ :destroy ]
       resources :articles do
+        collection do
+          get 'tag/:tag', to: 'articles#index', as: :tag
+        end
         resources :comments
       end
       resources :accounts, except: [ :destroy ] do
