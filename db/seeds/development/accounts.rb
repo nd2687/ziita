@@ -12,4 +12,11 @@ name.each do |name|
   )
   account.setting_password = true
   account.save!
+
+  fname = Rails.root.join("db/seeds/development", "account_image.jpg")
+  AccountImage.create(
+     account: account,
+     data: File.open(fname, "rb").read,
+     content_type: "image/jpeg"
+    )
 end

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124130052) do
+ActiveRecord::Schema.define(version: 20141125183739) do
+
+  create_table "account_images", force: true do |t|
+    t.integer  "account_id",   null: false
+    t.binary   "data"
+    t.string   "content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "account_images", ["account_id"], name: "index_account_images_on_account_id", using: :btree
 
   create_table "accounts", force: true do |t|
     t.string   "identify_name",                     null: false
