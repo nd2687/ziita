@@ -36,10 +36,13 @@
           <%= error_message(@article, :tag_list) %>
         </div>
       </div>
+
+      <div class="form-group">
+        <div class="article-submit">
+          <%= f.submit "作成", class: "btn btn-default col-xs-5" %>
+        </div>
+      </div>
     </div>
 
-    <div class="col-xs-offset-1 article-submit">
-      <%= f.submit "作成", class: "btn btn-default col-xs-5" %>
-    </div>
   </div>
 <% end %>
