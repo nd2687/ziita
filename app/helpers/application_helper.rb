@@ -24,6 +24,17 @@ module ApplicationHelper
     text
   end
 
+  def account_image_tag(account, options = {})
+    if account.image.present?
+      path =
+        user_account_path(identify_name: account.identify_name, id: account,
+                          format: account.image.extension)
+      link_to(image_tag(path, { alt: account.identify_name }.merge(options)), path)
+    else
+      ""
+    end
+  end
+
   def hbr(text)
     text = html_escape(text)
     text.gsub(/\r\n|\r|\n/, "<br />").html_safe

@@ -6,6 +6,9 @@ ja:
         sites: サイトURL
         company: 会社、所属団体等
         residence: 地域
+      account_image:
+        uploaded_image: 画像
+        _destroy: 削除
     errors:
       models:
         account:
@@ -19,3 +22,8 @@ ja:
               too_long: は32文字以内にしてください。
             residence:
               too_long: は32文字以内にしてください。
+        account_image:
+          attributes:
+            uploaded_image:
+              too_big_image: が大きすぎます(最大64KB)
+              invalid_image: の形式が違います(JPEG,GIF,PNGのどれかにしてください)
