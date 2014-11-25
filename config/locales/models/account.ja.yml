@@ -6,6 +6,7 @@ ja:
         sites: サイトURL
         company: 会社、所属団体等
         residence: 地域
+        email_publication: メールアドレス公開
       account_image:
         uploaded_image: 画像
         _destroy: 削除
