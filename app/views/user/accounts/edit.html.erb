@@ -1,7 +1,27 @@
 <%= form_for @account, url: user_account_path(
-  identify_name: current_user.identify_name, id: current_user.id) do |f| %>
+  identify_name: current_user.identify_name, id: current_user.id),
+  html: { multipart: true } do |f| %>
 
   <div class="form-horizontal">
+    <div class="form-group">
+      <%= f.fields_for :image do |imgf| %>
+        <%= imgf.label :uploaded_image, class: 'col-xs-4' %>
+      <div class="col-xs-8">
+        <%= imgf.file_field :uploaded_image, id: "lefile", style: "display:none" %>
+        <div class="input-append">
+          <input id="photoCover" class="input-large" type="text">
+          <a class="btn" onclick="$('input[id=lefile]').click();">Browse</a>
+        </div>
+        <%= error_message(@account.image, :uploaded_image) %>
+        <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+          <%= account_image_tag @account, width: 60 %>
+          <%= imgf.check_box :_destroy %>
+          <%= imgf.label :_destroy %>
+          <%= imgf.hidden_field :id %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
     <div class="form-group">
       <%= f.label :email_publication, "メールアドレスを公開", class: 'col-xs-4' %>
       <div class="col-xs-8">

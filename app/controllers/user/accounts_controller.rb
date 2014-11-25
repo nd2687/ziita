@@ -4,8 +4,13 @@ class User::AccountsController < User::Base
 
   def show
     @account = Account.find(params[:id])
-    if @account != actual_user
-      redirect_to user_account_path(identify_name: @account.identify_name, id: @account)
+    if params[:format].in?(["jpg", "png", "gif"])
+      send_image
+    else
+      if @account != actual_user
+        redirect_to user_account_path(
+          identify_name: @account.identify_name, id: @account)
+      end
     end
   end
 
@@ -20,9 +25,12 @@ class User::AccountsController < User::Base
   end
 
   def edit
+    @account = Account.find(params[:id])
+    @account.build_image unless @account.image
   end
 
   def update
+    @account = Account.find(params[:id])
     @account.assign_attributes(edit_account_params)
     if @account.save
       flash.notice = "アカウント情報を更新しました。"
@@ -61,10 +69,27 @@ class User::AccountsController < User::Base
   end
 
   def edit_account_params
+    if params[:account][:image_attributes][:uploaded_image].present?
+      @account.build_image if @account.image.nil?
+      @account.image.content_type = convert_content_type(
+        params[:account][:image_attributes][:uploaded_image].content_type)
+      @account.image.data = params[:account][:image_attributes][:uploaded_image].read
+    end
     params.require(:account).permit(
       :email_publication, :self_introduction, :sites,
-      :company, :residence
+      :company, :residence,
+      image_attributes: [ :id, :_destroy ]
     )
+  end
+
+  def convert_content_type(ctype)
+    cytpe = ctype.rstrip.downcase
+    case ctype
+    when "image/pjpeg" then "image/jpeg"
+    when "image/jpg" then "image/jpeg"
+    when "image/x-png" then "image/png"
+    else ctype
+    end
   end
 
   def password_params
@@ -78,6 +103,15 @@ class User::AccountsController < User::Base
     if @account != current_user
       flash.alert = "他ユーザーの情報編集はできません。"
       redirect_to :root
+    end
+  end
+
+  def send_image
+    if @account.image.present?
+      send_data @account.image.data,
+        type: @account.image.content_type, disposition: "inline"
+    else
+      raise NotFound
     end
   end
 end

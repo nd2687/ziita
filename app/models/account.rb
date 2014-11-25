@@ -22,6 +22,9 @@
 
 class Account < ActiveRecord::Base
   has_many :articles, dependent: :destroy
+  has_one :image, class_name: 'AccountImage', dependent: :destroy
+
+  accepts_nested_attributes_for :image, allow_destroy: true
 
   attr_accessor :password, :password_confirmation, :setting_password
   alias_method :setting_password?, :setting_password
