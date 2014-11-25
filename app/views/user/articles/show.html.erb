@@ -31,8 +31,6 @@
   <% if current_user && @article.account == current_user %>
     <%= link_to '記事編集', edit_user_article_path(
           identify_name: current_user.identify_name, id: @article) %><br>
-    <%= link_to "削除", user_article_path(identify_name: current_user.identify_name, id: @article),
-          method: :delete, data: { confirm: "本当に削除しますか？" } %>
   <% end %>
 </p>
 
@@ -51,3 +49,10 @@
 
 <hr>
 <p><%= link_to 'コメントを追加', new_user_article_comment_path(identify_name: actual_user.identify_name, article_id: @article.id) %></p>
+
+<p class="right-elm">
+  <% if current_user && @article.account == current_user %>
+    <%= link_to "この記事を削除する", user_article_path(identify_name: current_user.identify_name, id: @article),
+          method: :delete, data: { confirm: "本当に削除しますか？" } %>
+  <% end %>
+</p>
