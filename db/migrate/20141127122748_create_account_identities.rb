@@ -4,11 +4,13 @@ class CreateAccountIdentities < ActiveRecord::Migration
       t.references :account, null: false
       t.string :provider, null: false
       t.string :uid, null: false
-      t.string :info, null: false
+      t.string :email, null: false
+      t.string :nickname, null: false
 
       t.timestamps
     end
 
-    add_index :account_identities, [ :provider, :uid, :info ], unique: true
+    add_index :account_identities, [ :provider, :uid, :email ], unique: true
+    add_index :account_identities, [ :provider, :uid, :nickname ], unique: true
   end
 end

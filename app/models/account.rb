@@ -30,16 +30,16 @@ class Account < ActiveRecord::Base
   attr_accessor :password, :password_confirmation, :setting_password
   alias_method :setting_password?, :setting_password
 
-  validates :password, presence: true, confirmation: true
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates :password, presence: true, confirmation: true, on: :create
 
   validates :self_introduction,length: { maximum: 1000, allow_blank: true }
   validates :sites, format: { with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix,
                               allow_blank: true }
   validates :company, length: { maximum: 32, allow_blank: true }
   validates :residence, length: { maximum: 32, allow_blank: true }
-  validates_uniqueness_of :identify_name
-  validates_uniqueness_of :email, scope: :email_for_index
+  validates_uniqueness_of :identify_name, on: :create
+  validates_uniqueness_of :email, scope: :email_for_index, on: :create
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
 
   before_validation do
     self.email_for_index = email.downcase if email
@@ -65,5 +65,13 @@ class Account < ActiveRecord::Base
       account.uid = auth["uid"]
       account.identify_name = auth["user_info"]["nickname"]
     end
+  end
+
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
+
+  def self.create_unique_email
+    Account.create_unique_string + "@example.com"
   end
 end
