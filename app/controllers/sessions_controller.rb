@@ -30,7 +30,8 @@ class SessionsController < ApplicationController
       if account_identity.new_record?
         session[:omniauth_provider] = account_identity.provider
         session[:omniauth_uid] = account_identity.uid
-        session[:omniauth_info] = account_identity.info
+        session[:omniauth_email] = account_identity.email
+        session[:omniauth_nickname] = account_identity.nickname
         @account = account_identity
         render :callback
       else

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'top#index'
 
   resource :session, only: [ :new, :create, :destroy ]
+  resource :account, only: [ :new, :create ]
   resource :account_identity, only: [ :new, :create ]
   get '/auth/:provider/callback', to: "sessions#callback"
   get '/auth/failure', to: "sessions#failure"
