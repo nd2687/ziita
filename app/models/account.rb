@@ -30,11 +30,16 @@ class Account < ActiveRecord::Base
   attr_accessor :password, :password_confirmation, :setting_password
   alias_method :setting_password?, :setting_password
 
+  validates :password, presence: true, confirmation: true
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
   validates :self_introduction,length: { maximum: 1000, allow_blank: true }
   validates :sites, format: { with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix,
                               allow_blank: true }
   validates :company, length: { maximum: 32, allow_blank: true }
   validates :residence, length: { maximum: 32, allow_blank: true }
+  validates_uniqueness_of :identify_name
+  validates_uniqueness_of :email, scope: :email_for_index
 
   before_validation do
     self.email_for_index = email.downcase if email
