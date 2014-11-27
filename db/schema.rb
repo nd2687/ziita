@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125183739) do
+ActiveRecord::Schema.define(version: 20141127122748) do
+
+  create_table "account_identities", force: true do |t|
+    t.integer  "account_id", null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.string   "info",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "account_identities", ["provider", "uid", "info"], name: "index_account_identities_on_provider_and_uid_and_info", unique: true, using: :btree
 
   create_table "account_images", force: true do |t|
     t.integer  "account_id",   null: false
@@ -29,7 +40,7 @@ ActiveRecord::Schema.define(version: 20141125183739) do
     t.string   "email_for_index",                   null: false
     t.boolean  "email_publication", default: false, null: false
     t.string   "password_digest",                   null: false
-    t.text     "self_introduction",                 null: false
+    t.text     "self_introduction"
     t.string   "sites"
     t.string   "company"
     t.string   "residence"

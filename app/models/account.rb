@@ -8,7 +8,7 @@
 #  email_for_index   :string(255)      not null
 #  email_publication :boolean          default(FALSE), not null
 #  password_digest   :string(255)      not null
-#  self_introduction :text             not null
+#  self_introduction :text
 #  sites             :string(255)
 #  company           :string(255)
 #  residence         :string(255)
@@ -23,13 +23,14 @@
 class Account < ActiveRecord::Base
   has_many :articles, dependent: :destroy
   has_one :image, class_name: 'AccountImage', dependent: :destroy
+  has_one :account_identity
 
   accepts_nested_attributes_for :image, allow_destroy: true
 
   attr_accessor :password, :password_confirmation, :setting_password
   alias_method :setting_password?, :setting_password
 
-  validates :self_introduction, presence: true, length: { maximum: 1000 }
+  validates :self_introduction,length: { maximum: 1000, allow_blank: true }
   validates :sites, format: { with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix,
                               allow_blank: true }
   validates :company, length: { maximum: 32, allow_blank: true }
@@ -50,6 +51,14 @@ class Account < ActiveRecord::Base
       self
     else
       false
+    end
+  end
+
+  def self.create_with_omniauth(auth)
+    create! do |account|
+      account.provider = auth["provider"]
+      account.uid = auth["uid"]
+      account.identify_name = auth["user_info"]["nickname"]
     end
   end
 end
