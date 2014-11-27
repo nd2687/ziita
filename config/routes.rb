@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'top#index'
 
   resource :session, only: [ :new, :create, :destroy ]
+  resource :account_identity, only: [ :new, :create ]
+  get '/auth/:provider/callback', to: "sessions#callback"
+  get '/auth/failure', to: "sessions#failure"
+
   resources :articles, only: [ :index, :show ] do
     collection do
       get 'tag/:tag', to: 'articles#index', as: :tag

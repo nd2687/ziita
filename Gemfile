@@ -22,6 +22,11 @@ gem 'coderay'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'figaro'
+
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.4.1'
