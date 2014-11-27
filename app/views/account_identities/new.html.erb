@@ -1,0 +1,7 @@
+<%= form_for @account, url: :account_identity do |f| %>
+  <%= f.text_field :identify_name %>
+  <%= f.text_field :email %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit '登録する' %>
+<% end %>

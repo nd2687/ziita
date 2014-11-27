@@ -1,0 +1,14 @@
+<p>failure!</p>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var div = document.getElementById("flash");
+    if(div && window.opener){
+      window.close();
+    };
+  });
+</script>
+
+<div id="flash" style="color:red">
+  <a href="#" onClick="window.close(); return false;">閉じる</a>
+</div>
