@@ -7,6 +7,10 @@ ja:
         company: 会社、所属団体等
         residence: 地域
         email_publication: メールアドレス公開
+        identify_name: ログイン名( id )
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード再入力
       account_image:
         uploaded_image: 画像
         _destroy: 削除
@@ -23,6 +27,13 @@ ja:
               too_long: は32文字以内にしてください。
             residence:
               too_long: は32文字以内にしてください。
+            password_confirmation:
+              confirmation: が間違っています。
+            email:
+              invalid: が不正な値です。
+              taken: は既に登録されてあります。
+            identify_name:
+              taken: は既に登録されてあります。
         account_image:
           attributes:
             uploaded_image:

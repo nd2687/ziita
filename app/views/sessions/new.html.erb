@@ -1,31 +1,38 @@
-<%= form_tag [ :session ] do %>
-  <div class="form-horizontal">
-    <div class="form-group">
-      <%= label_tag :identify_name, 'ログイン名', class: "col-xs-4" %>
-      <div class="col-xs-8">
-        <%= text_field_tag :identify_name, '', autofocus: true, class: "form-control" %>
+<div class="row" style="width: 300px; margin:auto">
+  <div class="well">
+    <%= form_tag [ :session ], id: "loginForm", novalidate: "novalidate" do %>
+      <div class="form-group">
+      <%= label_tag :identify_name, 'ログイン名', class: "control-label" %>
+        <%= text_field_tag :identify_name, '', autofocus: true, type: "text",
+              class: "form-control", placeholder: "example@gmail.com" %>
+        <span class="help-block"></span>
       </div>
-    </div>
-    <div class="form-group">
-      <%= label_tag :password, 'パスワード', class: "col-xs-4" %>
-      <div class="col-xs-8">
-        <%= password_field_tag :password, '', class: "form-control" %>
+      <div class="form-group">
+        <%= label_tag :password, 'パスワード', class: "control-label" %>
+        <%= password_field_tag :password, '', class: "form-control", type: "password" %>
+        <span class="help-block"></span>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-xs-offset-2 col-xs-10">
-        <%= submit_tag 'ログイン', class: 'btn btn-default' %>
+      <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+    <!--
+      <div class="checkbox">
+        <label>
+            <input type="checkbox" name="remember" id="remember"> Remember login
+        </label>
+        <p class="help-block">(if this is a private computer)</p>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-xs-offset-2 col-xs-10">
-        <a href="", class="githubLink" id="githubButton",
-          onclick="window.open('/auth/github', 'git', 'width=700, height=600');
-          return false">Githubログイン</a>
-      </div>
-    </div>
+    -->
+      <%= submit_tag 'ログイン', class: 'btn btn-default btn-block', type: "submit" %>
+    <% end %>
   </div>
-<% end %>
+  <br>
+  <a href="", class="twitterLink btn btn-success btn-block" id="twitterButton",
+    onclick="window.open('/auth/twitter', 'twitter', 'width=700, height=600');
+    return false">Twitterログイン</a>
+  <br>
+  <a href="", class="githubLink btn btn-success btn-block" id="githubButton",
+    onclick="window.open('/auth/github', 'git', 'width=700, height=600');
+    return false">Githubログイン</a>
+</div>
 
 <script type="text/javascript">
   $.testFunc = function(val){

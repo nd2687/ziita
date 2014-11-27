@@ -15,7 +15,6 @@ class AccountIdentitiesController < ApplicationController
         :uid => session[:omniauth_uid],
         :info => session[:omniauth_info]
       )
-      ai.account.email = params[:account][:email]
       session.delete(:omniauth_provider)
       session.delete(:omniauth_uid)
       session.delete(:omniauth_info)
