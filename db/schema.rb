@@ -17,12 +17,14 @@ ActiveRecord::Schema.define(version: 20141127122748) do
     t.integer  "account_id", null: false
     t.string   "provider",   null: false
     t.string   "uid",        null: false
-    t.string   "info",       null: false
+    t.string   "email",      null: false
+    t.string   "nickname",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "account_identities", ["provider", "uid", "info"], name: "index_account_identities_on_provider_and_uid_and_info", unique: true, using: :btree
+  add_index "account_identities", ["provider", "uid", "email"], name: "index_account_identities_on_provider_and_uid_and_email", unique: true, using: :btree
+  add_index "account_identities", ["provider", "uid", "nickname"], name: "index_account_identities_on_provider_and_uid_and_nickname", unique: true, using: :btree
 
   create_table "account_images", force: true do |t|
     t.integer  "account_id",   null: false

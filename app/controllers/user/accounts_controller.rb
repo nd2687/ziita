@@ -69,11 +69,13 @@ class User::AccountsController < User::Base
   end
 
   def edit_account_params
-    if params[:account][:image_attributes][:uploaded_image].present?
-      @account.build_image if @account.image.nil?
-      @account.image.content_type = convert_content_type(
-        params[:account][:image_attributes][:uploaded_image].content_type)
-      @account.image.data = params[:account][:image_attributes][:uploaded_image].read
+    if params[:account][:image_attributes].present?
+      if params[:account][:image_attributes][:uploaded_image].present?
+        @account.build_image if @account.image.nil?
+        @account.image.content_type = convert_content_type(
+          params[:account][:image_attributes][:uploaded_image].content_type)
+        @account.image.data = params[:account][:image_attributes][:uploaded_image].read
+      end
     end
     params.require(:account).permit(
       :email_publication, :self_introduction, :sites,
