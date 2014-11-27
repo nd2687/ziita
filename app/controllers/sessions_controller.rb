@@ -27,9 +27,6 @@ class SessionsController < ApplicationController
   def callback
     if request.env['omniauth.auth']
       account_identity = OmniAuthAuthenticator.verify(env['omniauth.auth'])
-      p "#" * 100
-      p env['omniauth.auth']
-      p account_identity
       if account_identity.new_record?
         session[:omniauth_provider] = account_identity.provider
         session[:omniauth_uid] = account_identity.uid
