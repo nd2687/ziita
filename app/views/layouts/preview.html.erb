@@ -24,7 +24,13 @@
         <%= flash_messages %>
         <%= yield %>
       </div>
+      <div class="push"></div>
     </div>
 
+    <div class="footer">
+      <p class="text-muted credit">
+        <%= render 'user/shared/footer' %>
+      </p>
+    </div>
   </body>
 </html>

@@ -1,7 +1,5 @@
 <% @page_title = @article.title  %>
 
-<p><%= link_to '戻る', [ :user, :articles ] %></p>
-
 <hr>
 <p>記事を書いた人</p>
 <p>
@@ -12,6 +10,15 @@
 <hr>
 <div class="article-title">
 <p class="article-wrap h3"><%= @article.title %></p>
+</div>
+<div>
+  <% if (count = @article.stacks.count) > 0 %>
+    ★ <%= count %>
+  <% end %>
+  <% if current_user && current_user.stackable_for?(@article) %>
+    <%= link_to "stack!", like_user_article_path(identify_name: actual_user.identify_name,
+          id: @article), method: :patch, class: 'button' %>
+  <% end %>
 </div>
 <div class="right-elm">
   <%= user_tag_link @article.tag_list %>
