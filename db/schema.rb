@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127122748) do
+ActiveRecord::Schema.define(version: 20141129184722) do
 
   create_table "account_identities", force: true do |t|
     t.integer  "account_id", null: false
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 20141127122748) do
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
 
+  create_table "stacks", force: true do |t|
+    t.integer  "account_id", null: false
+    t.integer  "article_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stacks", ["account_id", "article_id"], name: "index_stacks_on_account_id_and_article_id", unique: true, using: :btree
+  add_index "stacks", ["article_id"], name: "stacks_article_id_fk", using: :btree
+
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -98,5 +108,8 @@ ActiveRecord::Schema.define(version: 20141127122748) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  add_foreign_key "stacks", "accounts", name: "stacks_account_id_fk"
+  add_foreign_key "stacks", "articles", name: "stacks_article_id_fk"
 
 end

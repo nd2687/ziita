@@ -1,5 +1,5 @@
 .self-introduction-area {
-  width: 90%!important;
+  width: 100%!important;
   height: 200px!important;
   border: solid 0.2em;
   border-color: #6D84B4;
@@ -9,4 +9,16 @@
 .mail-link a {
   color: black;
   text-decoration: none;
+}
+
+.account-show {
+  max-width: 240px;
+  min-width: 200px;
+  margin: auto;
+}
+
+.account-image {
+  width: 100%;
+  max-width: 200px;
+  min-width: 90px;
 }

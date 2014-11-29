@@ -24,6 +24,8 @@ class Account < ActiveRecord::Base
   has_many :articles, dependent: :destroy
   has_one :image, class_name: 'AccountImage', dependent: :destroy
   has_one :account_identity
+  has_many :stacks, dependent: :destroy
+  has_many :stacked_articles, through: :stacks, source: :article
 
   accepts_nested_attributes_for :image, allow_destroy: true
 
@@ -57,6 +59,10 @@ class Account < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def stackable_for?(article)
+    article && article.account != self && !stacks.exists?(article_id: article.id)
   end
 
   def self.create_with_omniauth(auth)

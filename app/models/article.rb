@@ -17,11 +17,12 @@
 class Article < ActiveRecord::Base
   belongs_to :account
   has_many :comments
+  has_many :stacks, dependent: :destroy
+  has_many :stackers, through: :stacks, source: :account
 
   validates :title, presence: true,
                     length: { maximum: 64 }
   validates :body, presence: true
-
   validate :validate_tag
 
   acts_as_taggable
@@ -29,7 +30,7 @@ class Article < ActiveRecord::Base
   def validate_tag
     tag_list.each do |tag|
       errors.add(:tag_list, :too_long) unless tag.length < 32
-      errors.add(:tag_list, :format) unless tag =~ /\A[-a-zA-Z_. ]+\z/
+      errors.add(:tag_list, :format) unless tag =~ /\A[-a-zA-Z\W_ ]+\z/
     end
   end
 end

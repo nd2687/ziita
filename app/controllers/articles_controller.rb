@@ -14,4 +14,15 @@ class ArticlesController < ApplicationController
     @comments = @article.comments
   end
 
+  def like
+    @article = Article.find(params[:id])
+    current_user.stacked_articles << @article
+    flash.notice = "stacked!"
+    redirect_to @article
+  end
+
+  def unlike
+    current_user.stacked_articles.delete(Article.find(params[:id]))
+    redirect_to @article
+  end
 end

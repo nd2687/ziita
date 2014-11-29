@@ -1,0 +1,20 @@
+<% @page_title = "stackした記事" %>
+
+<h3><%= @page_title %></h3>
+
+<% if @articles.present? %>
+  <ul class="list-group">
+    <% @articles.each do |article| %>
+      <li class="list-group-item article-wrap">
+        <%= link_to article.title, user_article_path(
+          identify_name: article.account.identify_name, id: article.id) %>
+        <% if article.comments.count > 0 %>
+        <span class="badge">
+          <%= link_to 'unstack', unlike_user_article_path(
+            identify_name: current_user.identify_name,id: article), method: :patch %>
+        </span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
