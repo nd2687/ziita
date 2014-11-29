@@ -1,5 +1,5 @@
 class User::ArticlesController < User::Base
-  before_action :only_current_user, except: [ :index, :show ]
+  before_action :only_current_user, except: [ :index, :show, :like ]
 
   layout :resolve_layout
 
@@ -58,6 +58,23 @@ class User::ArticlesController < User::Base
       flash.now[:alert] = "記事の削除に失敗しました。"
       redirect_to :back
     end
+  end
+
+  def like
+    @article = Article.find(params[:id])
+    current_user.stacked_articles << @article
+    flash.notice = "stacked!"
+    redirect_to user_article_path(identify_name: actual_user.identify_name, id: @article)
+  end
+
+  def unlike
+    current_user.stacked_articles.delete(Article.find(params[:id]))
+    flash.notice = "unstack"
+    redirect_to stacked_user_articles_path(identify_name: actual_user.identify_name)
+  end
+
+  def stacked
+    @articles = current_user.stacked_articles.order("stacks.created_at DESC")
   end
 
   private

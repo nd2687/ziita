@@ -1,10 +1,6 @@
 class User::CommentsController < User::Base
   before_action :prepare_article
 
-  def index
-    @comments = @article.comments
-  end
-
   def new
     @comment = Comment.new
   end

@@ -9,22 +9,27 @@
   <li role="presentation" class="">
     <%= link_to "アカウント情報", user_account_path(identify_name: actual_user.identify_name, id: actual_user.id) %>
   </li>
-<% if actual_user == current_user %>
-<li><%= link_to "編集", edit_user_account_path(
-  identify_name: current_user.identify_name, id: current_user.id) %></li>
-<% end %>
+  <% if actual_user == current_user %>
+    <li><%= link_to "編集", edit_user_account_path(
+      identify_name: current_user.identify_name, id: current_user.id) %></li>
+    <li>
+      <%= link_to "stackした記事", stacked_user_articles_path(identify_name: current_user.identify_name) %>
+    </li>
+  <% end %>
 </ul>
 
 <table class="table table-bordered">
   <tr>
-   <td><%= account_image_tag actual_user, width: 80 %></td>
+   <td><%= account_image_tag actual_user, class: 'account-image' %></td>
    <td>
      <table class='table table-hover table-bordered'>
        <tr>
         <td>stack</td>
+        <td><%= actual_user.stacks.count %></td>
        </tr>
        <tr>
-        <td>view</td>
+        <td>stacked</td>
+        <td class=""><%= @stacked_count %></td>
        </tr>
      </table>
    </td>
@@ -63,10 +68,9 @@
     <% @articles.each do |article| %>
       <li class="list-group-item article-wrap">
         <%= link_to article.title, user_article_path(identify_name: actual_user.identify_name, id: article.id) %>
-        <% if article.comments.count > 0 %>
-        <span class="badge">
-          <%= link_to "#{article.comments.count}", user_article_comments_path(
-            identify_name: actual_user.identify_name, article_id: article.id) %>
+        <% if ( stack_count = article.stacks.count) > 0 %>
+        <span class="pull-right label label-success label-as-badge">
+          <%= stack_count %>
         </span>
         <% end %>
       </li>
