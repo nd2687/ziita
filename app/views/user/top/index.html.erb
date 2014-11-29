@@ -9,4 +9,67 @@
   <li role="presentation" class="">
     <%= link_to "アカウント情報", user_account_path(identify_name: actual_user.identify_name, id: actual_user.id) %>
   </li>
+<% if actual_user == current_user %>
+<li><%= link_to "編集", edit_user_account_path(
+  identify_name: current_user.identify_name, id: current_user.id) %></li>
+<% end %>
 </ul>
+
+<table class="table table-bordered">
+  <tr>
+   <td><%= account_image_tag actual_user, width: 80 %></td>
+   <td>
+     <table class='table table-hover table-bordered'>
+       <tr>
+        <td>stack</td>
+       </tr>
+       <tr>
+        <td>view</td>
+       </tr>
+     </table>
+   </td>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td><%= actual_user.identify_name %></td>
+  </tr>
+  <% if actual_user == current_user || actual_user.email_publication == true %>
+  <tr class="mail-link">
+    <td>メールアドレス</td>
+    <td><%= mail_to actual_user.email %> <%= actual_user.email_publication %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td>サイトURL</td>
+    <td><%= actual_user.sites %></td>
+  </tr>
+  <tr>
+    <td>会社・所属団体等</td>
+    <td><%= actual_user.company %></td>
+  </tr>
+  <tr>
+   <td>地域</td>
+   <td><%= actual_user.residence %></td>
+  </tr>
+  <tr>
+    <td>自己紹介</td>
+    <td><%= hbr actual_user.self_introduction %></td>
+  </tr>
+</table>
+
+
+<div class="articlesAndAny">
+  <ul class="list-group">
+    <% @articles.each do |article| %>
+      <li class="list-group-item article-wrap">
+        <%= link_to article.title, user_article_path(identify_name: actual_user.identify_name, id: article.id) %>
+        <% if article.comments.count > 0 %>
+        <span class="badge">
+          <%= link_to "#{article.comments.count}", user_article_comments_path(
+            identify_name: actual_user.identify_name, article_id: article.id) %>
+        </span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
