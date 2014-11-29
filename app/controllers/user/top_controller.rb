@@ -9,6 +9,10 @@ class User::TopController < User::Base
     else
       @articles = actual_user.articles.order(created_at: :desc)
     end
+
+    @stacked_count = 0
+    actual_user.articles.map{|article| @stacked_count += article.stacks.count }
+    @stacked_count
   end
 
   private

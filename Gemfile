@@ -27,6 +27,9 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'figaro'
 
+gem 'rails-i18n'
+gem 'foreigner', '~> 1.6.1'
+
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.4.1'
