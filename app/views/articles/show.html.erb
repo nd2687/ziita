@@ -5,8 +5,8 @@
 <hr>
 <p>記事を書いた人</p>
 <p>
-  <%= link_to @article.account.identify_name, user_account_path(
-    identify_name: @article.account.identify_name, id: @article.account.id) %>さん
+  <%= link_to @article.account.identify_name, user_root_path(
+    identify_name: @article.account.identify_name) %>さん
 </p>
 
 <hr>
