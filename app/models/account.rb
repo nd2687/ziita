@@ -97,19 +97,21 @@ class Account < ActiveRecord::Base
     article && article.account != self && !stacks.exists?(article_id: article.id)
   end
 
-  def self.create_with_omniauth(auth)
-    create! do |account|
-      account.provider = auth["provider"]
-      account.uid = auth["uid"]
-      account.identify_name = auth["user_info"]["nickname"]
+  class << self
+    def create_with_omniauth(auth)
+      create! do |account|
+        account.provider = auth["provider"]
+        account.uid = auth["uid"]
+        account.identify_name = auth["user_info"]["nickname"]
+      end
     end
-  end
 
-  def self.create_unique_string
-    SecureRandom.uuid
-  end
+    def create_unique_string
+      SecureRandom.uuid
+    end
 
-  def self.create_unique_email
-    Account.create_unique_string + "@example.com"
+    def create_unique_email
+      Account.create_unique_string + "@example.com"
+    end
   end
 end
