@@ -7,6 +7,22 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: "sessions#callback"
   get '/auth/failure', to: "sessions#failure"
 
+  namespace :help do
+    get :markdown
+  end
+
+  namespace :about do
+    get :ziita
+  end
+
+  namespace :contact do
+    get :us
+  end
+
+  namespace :term do
+    get :use
+  end
+
   resources :articles, only: [ :index, :show ] do
     member { patch "like", "unlike" }
     collection do
