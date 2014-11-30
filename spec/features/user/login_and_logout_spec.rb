@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'userログインログアウト' do
+feature 'accountログインログアウト' do
   include FeaturesSpecHelper
   let(:account) { create(:account) }
 
