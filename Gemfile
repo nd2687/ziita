@@ -38,6 +38,7 @@ group :test do
 end
 
 group :development do
+  gem "bullet"
   gem 'spring-commands-rspec', '~> 1.0.2'
   gem 'quiet_assets', '~> 1.0.3'
   gem 'annotate', '~> 2.6.5'
