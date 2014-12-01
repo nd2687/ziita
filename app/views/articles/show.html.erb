@@ -30,8 +30,8 @@
 
 <hr>
 <p class="right-elm">
-  <%= link_to @article.account.identify_name, user_account_path(
-    identify_name: @article.account.identify_name, id: @article.account.id) %>
+  <%= link_to @article.account.identify_name, user_root_path(
+    identify_name: @article.account.identify_name) %>さん
   作成日時
   <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
   <% if current_user && @article.account == current_user %>
