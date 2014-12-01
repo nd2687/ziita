@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20141129184722) do
     t.datetime "updated_at"
   end
 
+  add_index "account_identities", ["account_id"], name: "account_identities_account_id_fk", using: :btree
   add_index "account_identities", ["provider", "uid", "email"], name: "index_account_identities_on_provider_and_uid_and_email", unique: true, using: :btree
   add_index "account_identities", ["provider", "uid", "nickname"], name: "index_account_identities_on_provider_and_uid_and_nickname", unique: true, using: :btree
 
@@ -108,6 +109,12 @@ ActiveRecord::Schema.define(version: 20141129184722) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  add_foreign_key "account_identities", "accounts", name: "account_identities_account_id_fk"
+
+  add_foreign_key "account_images", "accounts", name: "account_images_account_id_fk"
+
+  add_foreign_key "comments", "articles", name: "comments_article_id_fk"
 
   add_foreign_key "stacks", "accounts", name: "stacks_account_id_fk"
   add_foreign_key "stacks", "articles", name: "stacks_article_id_fk"
