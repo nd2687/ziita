@@ -9,5 +9,6 @@ class CreateComments < ActiveRecord::Migration
     end
 
     add_index :comments, :article_id
+    add_foreign_key :comments, :articles
   end
 end
