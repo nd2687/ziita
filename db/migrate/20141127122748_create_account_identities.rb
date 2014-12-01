@@ -12,5 +12,6 @@ class CreateAccountIdentities < ActiveRecord::Migration
 
     add_index :account_identities, [ :provider, :uid, :email ], unique: true
     add_index :account_identities, [ :provider, :uid, :nickname ], unique: true
+    add_foreign_key :account_identities, :accounts
   end
 end

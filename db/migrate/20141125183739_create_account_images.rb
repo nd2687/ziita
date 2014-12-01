@@ -9,5 +9,6 @@ class CreateAccountImages < ActiveRecord::Migration
     end
 
     add_index :account_images, :account_id
+    add_foreign_key :account_images, :accounts
   end
 end
