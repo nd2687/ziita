@@ -3,8 +3,8 @@
 <hr>
 <p>記事を書いた人</p>
 <p>
-  <%= link_to @article.account.identify_name, user_account_path(
-    identify_name: @article.account.identify_name, id: @article.account.id) %>さん
+  <%= link_to @article.account.identify_name, user_root_path(
+    identify_name: @article.account.identify_name) %>さん
 </p>
 
 <hr>
@@ -31,8 +31,8 @@
 
 <hr>
 <p class="right-elm">
-  <%= link_to @article.account.identify_name, user_account_path(
-    identify_name: @article.account.identify_name, id: @article.account.id) %>
+  <%= link_to @article.account.identify_name, user_root_path(
+    identify_name: @article.account.identify_name) %>さん
   作成日時
   <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
   <% if current_user && @article.account == current_user %>
@@ -43,7 +43,7 @@
 
 <p>コメント</p>
 <ul class="list-group">
-  <% @comments.each do |comment| %>
+  <% @article.comments.each do |comment| %>
     <li class="list-group-item">
       <p><%= comment.name %></p>
       <%= hbr comment.body %>
