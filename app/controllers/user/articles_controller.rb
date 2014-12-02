@@ -74,7 +74,7 @@ class User::ArticlesController < User::Base
   end
 
   def stacked
-    @articles = current_user.stacked_articles.order("stacks.created_at DESC")
+    @articles = current_user.stacked_articles.order("stacks.created_at DESC").includes(:account)
   end
 
   private
