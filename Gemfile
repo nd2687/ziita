@@ -16,7 +16,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'nokogiri', '~> 1.6.3'
 
-gem 'redcarpet', '~> 2.3.0'
+gem 'redcarpet', '~> 3.2.1'
 gem 'coderay'
 
 gem 'acts-as-taggable-on', '~> 3.4'
