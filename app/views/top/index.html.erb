@@ -22,10 +22,8 @@
 
 <hr>
 <p>登録タグ一覧</p>
-<ul class="nav nav-pills">
-  <% @tags.each do |tag| %>
-    <li role="presentation">
-      <%= link_to tag, tag_articles_path(tag) %>
-    </li>
-  <% end %>
-</ul>
+<% @tags.each do |tag| %>
+<span class="label label-default top-tag-index">
+  <%= link_to tag, tag_articles_path(tag) %>
+</span>
+<% end %>
