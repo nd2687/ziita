@@ -34,3 +34,12 @@ label.col-xs-2 {
   overflow: scroll;
   height: 500px;
 }
+
+.top-tag-index {
+  display:block;
+  float:left;
+  margin:5px 0 0 2px;
+  > a {
+    color: white;
+  }
+}
