@@ -31,6 +31,10 @@
         <td>stacked</td>
         <td class=""><%= @stacked_count %></td>
        </tr>
+       <tr>
+        <td>投稿数</td>
+        <td><%= actual_user.articles.count %></td>
+       </tr>
      </table>
    </td>
   </tr>
@@ -38,10 +42,10 @@
     <td>id</td>
     <td><%= actual_user.identify_name %></td>
   </tr>
-  <% if actual_user == current_user || actual_user.email_publication == true %>
+  <% if actual_user.email_publication == true %>
   <tr class="mail-link">
     <td>メールアドレス</td>
-    <td><%= mail_to actual_user.email %> <%= actual_user.email_publication %></td>
+    <td><%= mail_to actual_user.email %></td>
   </tr>
   <% end %>
   <tr>

@@ -12,7 +12,7 @@
   <% if @account == current_user || @account.email_publication == true %>
   <tr class="mail-link">
     <td>メールアドレス</td>
-    <td><%= mail_to @account.email %> <%= @account.email_publication %></td>
+    <td><%= mail_to @account.email %></td>
   </tr>
   <% end %>
   <tr>
