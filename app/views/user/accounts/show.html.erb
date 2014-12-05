@@ -2,33 +2,39 @@
 
 <table class="table table-bordered">
   <tr>
-   <td>画像</td>
-   <td><%= account_image_tag @account, class: 'account-image img-thumbnail' %></td>
+   <th>画像</th>
+   <td>
+     <% if @account.image.present? %>
+      <%= account_image_tag @account, class: 'account-image img-thumbnail' %>
+     <% else %>
+       <%= image_tag '/images/noimage.png', alt: "noimage", class: 'img-thumbnail' %>
+     <% end %>
+   </td>
   </tr>
   <tr>
-    <td>id</td>
+    <th>id</th>
     <td><%= @account.identify_name %></td>
   </tr>
   <% if @account == current_user || @account.email_publication == true %>
   <tr class="mail-link">
-    <td>メールアドレス</td>
+    <th>メールアドレス</th>
     <td><%= mail_to @account.email %></td>
   </tr>
   <% end %>
   <tr>
-    <td>サイトURL</td>
+    <th>サイトURL</th>
     <td><%= @account.sites %></td>
   </tr>
   <tr>
-    <td>会社・所属団体等</td>
+    <th>会社・所属団体等</th>
     <td><%= @account.company %></td>
   </tr>
   <tr>
-   <td>地域</td>
+   <th>地域</th>
    <td><%= @account.residence %></td>
   </tr>
   <tr>
-    <td>自己紹介</td>
+    <th>自己紹介</th>
     <td><%= hbr @account.self_introduction %></td>
   </tr>
 </table>

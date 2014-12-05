@@ -20,48 +20,54 @@
 
 <table class="table table-bordered">
   <tr>
-   <td><%= account_image_tag actual_user, class: 'account-image img-thumbnail' %></td>
-   <td>
-     <table class='table table-hover table-bordered'>
-       <tr>
-        <td>stack</td>
-        <td><%= actual_user.stacks.count %></td>
-       </tr>
-       <tr>
-        <td>stacked</td>
-        <td class=""><%= @stacked_count %></td>
-       </tr>
-       <tr>
-        <td>投稿数</td>
-        <td><%= actual_user.articles.count %></td>
-       </tr>
-     </table>
-   </td>
+    <th>
+      <% if actual_user.image.present? %>
+        <%= account_image_tag actual_user, class: 'account-image img-thumbnail' %>
+      <% else %>
+        <%= image_tag '/images/noimage.png', alt: "noimage", class: 'img-thumbnail' %>
+      <% end %>
+    </th>
+    <td>
+      <table class='table table-hover table-bordered'>
+        <tr>
+         <td>stack</td>
+         <td><%= actual_user.stacks.count %></td>
+        </tr>
+        <tr>
+         <td>stacked</td>
+         <td class=""><%= @stacked_count %></td>
+        </tr>
+        <tr>
+         <td>投稿数</td>
+         <td><%= actual_user.articles.count %></td>
+        </tr>
+      </table>
+    </td>
   </tr>
   <tr>
-    <td>id</td>
+    <th>id</th>
     <td><%= actual_user.identify_name %></td>
   </tr>
   <% if actual_user.email_publication == true %>
   <tr class="mail-link">
-    <td>メールアドレス</td>
+    <th>メールアドレス</th>
     <td><%= mail_to actual_user.email %></td>
   </tr>
   <% end %>
   <tr>
-    <td>サイトURL</td>
+    <th>サイトURL</th>
     <td><%= actual_user.sites %></td>
   </tr>
   <tr>
-    <td>会社・所属団体等</td>
+    <th>会社・所属団体等</th>
     <td><%= actual_user.company %></td>
   </tr>
   <tr>
-   <td>地域</td>
+   <th>地域</th>
    <td><%= actual_user.residence %></td>
   </tr>
   <tr>
-    <td>自己紹介</td>
+    <th>自己紹介</th>
     <td><%= hbr actual_user.self_introduction %></td>
   </tr>
 </table>
