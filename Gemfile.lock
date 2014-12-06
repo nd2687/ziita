@@ -265,6 +265,7 @@ DEPENDENCIES
   capistrano3-unicorn (~> 0.2.1)
   capybara (~> 2.4.1)
   coderay
+  coffee-rails
   factory_girl_rails (~> 4.4.1)
   figaro
   foreigner (~> 1.6.1)
