@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206204330) do
+ActiveRecord::Schema.define(version: 20141206212240) do
 
   create_table "account_identities", force: true do |t|
     t.integer  "account_id", null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20141206204330) do
     t.string   "residence"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "account_token",     limit: 20,                 null: false
+    t.string   "account_token",     limit: 20, default: "",    null: false
   end
 
   add_index "accounts", ["account_token"], name: "index_accounts_on_account_token", unique: true, using: :btree
@@ -63,12 +63,12 @@ ActiveRecord::Schema.define(version: 20141206204330) do
   end
 
   create_table "articles", force: true do |t|
-    t.integer  "account_id",             null: false
-    t.string   "title",                  null: false
-    t.text     "body",                   null: false
+    t.integer  "account_id",                          null: false
+    t.string   "title",                               null: false
+    t.text     "body",                                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "access_token", limit: 8, null: false
+    t.string   "access_token", limit: 8, default: "", null: false
   end
 
   add_index "articles", ["access_token"], name: "index_articles_on_access_token", unique: true, using: :btree
