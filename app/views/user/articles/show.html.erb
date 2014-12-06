@@ -17,7 +17,7 @@
   <% end %>
   <% if current_user && current_user.stackable_for?(@article) %>
     <%= link_to "stack!", like_user_article_path(identify_name: actual_user.identify_name,
-          id: @article), method: :patch, class: 'button' %>
+          access_token: @article.access_token), method: :patch, class: 'button' %>
   <% end %>
 </div>
 <div class="right-elm">
@@ -37,7 +37,7 @@
   <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
   <% if current_user && @article.account == current_user %>
     <%= link_to '記事編集', edit_user_article_path(
-          identify_name: current_user.identify_name, id: @article) %><br>
+          identify_name: current_user.identify_name, access_token: @article.access_token) %><br>
   <% end %>
 </p>
 
@@ -55,11 +55,11 @@
 </ul>
 
 <hr>
-<p><%= link_to 'コメントを追加', new_user_article_comment_path(identify_name: actual_user.identify_name, article_id: @article.id) %></p>
+<p><%= link_to 'コメントを追加', new_user_article_comment_path(identify_name: actual_user.identify_name, article_access_token: @article.access_token) %></p>
 
 <p class="right-elm">
   <% if current_user && @article.account == current_user %>
-    <%= link_to "この記事を削除する", user_article_path(identify_name: current_user.identify_name, id: @article),
+    <%= link_to "この記事を削除する", user_article_path(identify_name: current_user.identify_name, access_token: @article.access_token),
           method: :delete, data: { confirm: "本当に削除しますか？" } %>
   <% end %>
 </p>

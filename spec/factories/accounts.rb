@@ -12,11 +12,13 @@
 #  sites             :string(255)
 #  company           :string(255)
 #  residence         :string(255)
+#  account_token     :string(20)       not null
 #  created_at        :datetime
 #  updated_at        :datetime
 #
 # Indexes
 #
+#  index_accounts_on_account_token                      (account_token) UNIQUE
 #  index_accounts_on_identify_name_and_email_for_index  (identify_name,email_for_index) UNIQUE
 #
 

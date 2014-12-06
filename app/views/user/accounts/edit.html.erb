@@ -1,5 +1,5 @@
 <%= form_for @account, url: user_account_path(
-      identify_name: current_user.identify_name, id: current_user.id),
+      identify_name: current_user.identify_name, id: current_user),
       html: { multipart: true } do |f| %>
 
   <div class="well">

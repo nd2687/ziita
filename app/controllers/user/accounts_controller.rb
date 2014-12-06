@@ -1,18 +1,5 @@
 class User::AccountsController < User::Base
   skip_before_action :authenticate_account
-  before_action :check_current_user, except: [ :show ]
-
-  def show
-    @account = Account.find(params[:id])
-    if params[:format].in?(["jpg", "png", "gif"])
-      send_image
-    else
-      if @account != actual_user
-        redirect_to user_account_path(
-          identify_name: @account.identify_name, id: @account)
-      end
-    end
-  end
 
   def new
     @account = Account.new
@@ -25,16 +12,16 @@ class User::AccountsController < User::Base
   end
 
   def edit
-    @account = Account.find(params[:id])
+    @account = Account.find_by_account_token(params[:account_token])
     @account.build_image unless @account.image
   end
 
   def update
-    @account = Account.find(params[:id])
+    @account = Account.find_by_account_token(params[:account_token])
     @account.assign_attributes(edit_account_params)
     if @account.save
       flash.notice = "アカウント情報を更新しました。"
-      redirect_to user_account_path(identify_name: current_user.identify_name, id: @account.id)
+      redirect_to user_root_path(identify_name: current_user.identify_name)
     else
       flash.now[:alert] = "アカウント情報の更新に失敗しました。"
       render action: 'edit'
@@ -51,7 +38,7 @@ class User::AccountsController < User::Base
     if @change_password_form.save
       flash.notice = "パスワードを変更しました。"
       redirect_to settings_user_account_path(
-        identify_name: current_user.identify_name, id: current_user)
+        identify_name: current_user.identify_name, account_token: current_user.account_token)
     else
       flash.now[:alert] = "パスワードの変更に失敗しました。"
       render action: 'edit_password'
@@ -105,15 +92,6 @@ class User::AccountsController < User::Base
     if @account != current_user
       flash.alert = "他ユーザーの情報編集はできません。"
       redirect_to :root
-    end
-  end
-
-  def send_image
-    if @account.image.present?
-      send_data @account.image.data,
-        type: @account.image.content_type, disposition: "inline"
-    else
-      raise NotFound
     end
   end
 end

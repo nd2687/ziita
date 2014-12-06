@@ -12,7 +12,7 @@ class User::ArticlesController < User::Base
   end
 
   def show
-    @article = actual_user.articles.find(params[:id])
+    @article = actual_user.articles.find_by_access_token(params[:access_token])
     @comments = @article.comments
   end
 
@@ -33,16 +33,16 @@ class User::ArticlesController < User::Base
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.find_by_access_token(params[:access_token])
   end
 
   def update
-    @article = Article.find(params[:id])
-    @article.assign_attributes(article_params())
+    @article = Article.find_by_access_token(params[:access_token])
+    @article.assign_attributes(article_params)
     @article.account = current_user
     if @article.save
       flash.notice = "記事を更新しました。"
-      redirect_to user_article_path(identify_name: current_user.identify_name, id: @article)
+      redirect_to user_article_path(identify_name: current_user.identify_name, access_token: @article.access_token)
     else
       flash.now[:alert] = "記事の更新に失敗しました。"
       render action: "edit", layout: 'preview'
@@ -50,7 +50,7 @@ class User::ArticlesController < User::Base
   end
 
   def destroy
-    @article = Article.find(params[:id])
+    @article = Article.find_by_access_token(params[:access_token])
     if @article.destroy
       flash.notice = "記事を削除しました。"
       redirect_to user_articles_path(identify_name: current_user.identify_name)
@@ -61,14 +61,14 @@ class User::ArticlesController < User::Base
   end
 
   def like
-    @article = Article.find(params[:id])
+    @article = Article.find_by_access_token(params[:access_token])
     current_user.stacked_articles << @article
     flash.notice = "stacked!"
-    redirect_to user_article_path(identify_name: actual_user.identify_name, id: @article)
+    redirect_to user_article_path(identify_name: actual_user.identify_name, access_token: @article.access_token)
   end
 
   def unlike
-    current_user.stacked_articles.delete(Article.find(params[:id]))
+    current_user.stacked_articles.delete(Article.find_by_access_token(params[:access_token]))
     flash.notice = "unstack"
     redirect_to stacked_user_articles_path(identify_name: actual_user.identify_name)
   end
