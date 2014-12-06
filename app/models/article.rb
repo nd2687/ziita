@@ -20,8 +20,7 @@ class Article < ActiveRecord::Base
   has_many :stacks, dependent: :destroy
   has_many :stackers, through: :stacks, source: :account
 
-  validates :title, presence: true,
-                    length: { maximum: 64 }
+  validates :title, presence: true, length: { maximum: 64 }
   validates :body, presence: true
   validate :validate_tag
 
