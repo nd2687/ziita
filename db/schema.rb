@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129184722) do
+ActiveRecord::Schema.define(version: 20141206204330) do
 
   create_table "account_identities", force: true do |t|
     t.integer  "account_id", null: false
@@ -38,19 +38,21 @@ ActiveRecord::Schema.define(version: 20141129184722) do
   add_index "account_images", ["account_id"], name: "index_account_images_on_account_id", using: :btree
 
   create_table "accounts", force: true do |t|
-    t.string   "identify_name",                     null: false
-    t.string   "email",                             null: false
-    t.string   "email_for_index",                   null: false
-    t.boolean  "email_publication", default: false, null: false
-    t.string   "password_digest",                   null: false
+    t.string   "identify_name",                                null: false
+    t.string   "email",                                        null: false
+    t.string   "email_for_index",                              null: false
+    t.boolean  "email_publication",            default: false, null: false
+    t.string   "password_digest",                              null: false
     t.text     "self_introduction"
     t.string   "sites"
     t.string   "company"
     t.string   "residence"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "account_token",     limit: 20,                 null: false
   end
 
+  add_index "accounts", ["account_token"], name: "index_accounts_on_account_token", unique: true, using: :btree
   add_index "accounts", ["identify_name", "email_for_index"], name: "index_accounts_on_identify_name_and_email_for_index", unique: true, using: :btree
 
   create_table "administrators", force: true do |t|
@@ -61,13 +63,15 @@ ActiveRecord::Schema.define(version: 20141129184722) do
   end
 
   create_table "articles", force: true do |t|
-    t.integer  "account_id", null: false
-    t.string   "title",      null: false
-    t.text     "body",       null: false
+    t.integer  "account_id",             null: false
+    t.string   "title",                  null: false
+    t.text     "body",                   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "access_token", limit: 8, null: false
   end
 
+  add_index "articles", ["access_token"], name: "index_articles_on_access_token", unique: true, using: :btree
   add_index "articles", ["account_id"], name: "index_articles_on_account_id", using: :btree
 
   create_table "comments", force: true do |t|

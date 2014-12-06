@@ -1,5 +1,5 @@
 <%= form_for @article, url: user_article_path(identify_name: current_user.identify_name,
-      id: @article), method: :patch do |f| %>
+      access_token: @article.access_token), method: :patch do |f| %>
 
   <div class="row main-field">
     <div class="row">

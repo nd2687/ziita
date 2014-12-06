@@ -6,12 +6,7 @@
   <li role="presentation" class="">
     <%= link_to "投稿記事一覧", [ :user, :articles ] %>
   </li>
-  <li role="presentation" class="">
-    <%= link_to "アカウント情報", user_account_path(identify_name: actual_user.identify_name, id: actual_user.id) %>
-  </li>
   <% if actual_user == current_user %>
-    <li><%= link_to "編集", edit_user_account_path(
-      identify_name: current_user.identify_name, id: current_user.id) %></li>
     <li>
       <%= link_to "stackした記事", stacked_user_articles_path(identify_name: current_user.identify_name) %>
     </li>
@@ -77,7 +72,7 @@
   <ul class="list-group">
     <% @articles.each do |article| %>
       <li class="list-group-item article-wrap">
-        <%= link_to article.title, user_article_path(identify_name: actual_user.identify_name, id: article.id) %>
+        <%= link_to article.title, user_article_path(identify_name: actual_user.identify_name, access_token: article.access_token) %>
         <% if ( stack_count = article.stacks.count) > 0 %>
         <span class="pull-right label label-success label-as-badge">
           <%= stack_count %>
