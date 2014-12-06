@@ -27,8 +27,7 @@ module ApplicationHelper
   def account_image_tag(account, options = {})
     if account.image.present?
       path =
-        user_account_path(identify_name: account.identify_name, id: account,
-                          format: account.image.extension)
+        user_root_path(identify_name: account.identify_name, format: account.image.extension)
       link_to(image_tag(path, { alt: account.identify_name }.merge(options)), path)
     else
       ""

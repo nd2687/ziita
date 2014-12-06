@@ -26,6 +26,6 @@ class CommentsController < ApplicationController
   end
 
   def prepare_article
-    @article = Article.find(params[:article_id])
+    @article = Article.find_by_access_token(params[:article_access_token])
   end
 end

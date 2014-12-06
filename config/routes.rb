@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get :use
   end
 
-  resources :articles, only: [ :index, :show ] do
+  resources :articles, param: :access_token, only: [ :index, :show ] do
     member { patch "like", "unlike" }
     collection do
       get 'tag/:tag', to: 'articles#index', as: :tag
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     namespace :user, path: "" do
       root 'top#index'
       resource :session, only: [ :destroy ]
-      resources :articles do
+      resources :articles, param: :access_token do
         member { patch "like", "unlike" }
         collection do
           get 'tag/:tag', to: 'articles#index', as: :tag
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
         end
         resources :comments, except: :index
       end
-      resources :accounts, except: [ :destroy ] do
+      resources :accounts, param: :account_token, except: [ :show, :destroy ] do
         member do
           get :settings
           get :edit_password
