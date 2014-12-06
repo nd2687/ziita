@@ -12,11 +12,13 @@
 #  sites             :string(255)
 #  company           :string(255)
 #  residence         :string(255)
+#  account_token     :string(20)       not null
 #  created_at        :datetime
 #  updated_at        :datetime
 #
 # Indexes
 #
+#  index_accounts_on_account_token                      (account_token) UNIQUE
 #  index_accounts_on_identify_name_and_email_for_index  (identify_name,email_for_index) UNIQUE
 #
 
@@ -26,6 +28,9 @@ class Account < ActiveRecord::Base
   has_one :account_identity
   has_many :stacks, dependent: :destroy
   has_many :stacked_articles, through: :stacks, source: :article
+  validates_uniqueness_of :account_token
+  validates_presence_of :account_token
+  after_initialize :set_account_token
 
   accepts_nested_attributes_for :image, allow_destroy: true
 
@@ -113,5 +118,19 @@ class Account < ActiveRecord::Base
     def create_unique_email
       Account.create_unique_string + "@example.com"
     end
+  end
+
+  def to_param
+    return account_token
+  end
+
+  private
+  def set_account_token
+    self.account_token = self.account_token.blank? ? generate_account_token : self.account_token
+  end
+
+  def generate_account_token
+    tmp_token = SecureRandom.urlsafe_base64(15)
+    self.class.where(account_token: tmp_token).blank? ? tmp_token : generate_account_token
   end
 end

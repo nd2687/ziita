@@ -12,7 +12,7 @@ class User::CommentsController < User::Base
     @comment.name = "名無し" if @comment.name.empty?
     if @comment.save
       flash.notice = "コメントを追加しました！"
-      redirect_to user_article_path(identify_name: actual_user.identify_name, id: @article.id)
+      redirect_to user_article_path(identify_name: actual_user.identify_name, access_token: @article.access_token)
     else
       flash.now[:alert] = "コメントの追加に失敗しました。"
       render action: 'new'
@@ -27,6 +27,6 @@ class User::CommentsController < User::Base
   end
 
   def prepare_article
-    @article = actual_user.articles.find(params[:article_id])
+    @article = actual_user.articles.find_by_access_token(params[:article_access_token])
   end
 end
