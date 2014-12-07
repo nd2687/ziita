@@ -8,12 +8,10 @@
       <li class="list-group-item article-wrap">
         <%= link_to article.title, user_article_path(
           identify_name: article.account.identify_name, access_token: article.access_token) %>
-        <% if article.comments.count > 0 %>
         <span class="badge">
-          <%= link_to 'unstack', unlike_user_article_path(
-            identify_name: current_user.identify_name, access_token: article.access_token), method: :patch %>
+        <%= link_to 'unstack', unlike_user_article_path(
+          identify_name: current_user.identify_name, access_token: article.access_token), method: :patch %>
         </span>
-        <% end %>
       </li>
     <% end %>
   </ul>
