@@ -13,7 +13,7 @@ set :linked_dirs, %w{
 
 #set :port, 22
 #set :deploy_via, :remote_cache
-#set :use_sudo, false
+set :use_sudo, true
 
 set :pty, true
 set :migration_role, 'migrator'
