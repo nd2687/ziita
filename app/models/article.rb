@@ -25,9 +25,9 @@ class Article < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 64 }
   validates :body, presence: true
   validate :validate_tag
-#  validates_uniqueness_of :access_token
-#  validates_presence_of :access_token
-#  after_initialize :set_access_token
+  validates_uniqueness_of :access_token
+  validates_presence_of :access_token
+  after_initialize :set_access_token
 
   acts_as_taggable
 
@@ -38,17 +38,17 @@ class Article < ActiveRecord::Base
     end
   end
 
-#  def to_param
-#    return access_token
-#  end
-#
-#  private
-#  def set_access_token
-#    self.access_token = self.access_token.blank? ? generate_access_token : self.access_token
-#  end
-#
-#  def generate_access_token
-#    tmp_token = SecureRandom.urlsafe_base64(6)
-#    self.class.where(access_token: tmp_token).blank? ? tmp_token : generate_access_token
-#  end
+  def to_param
+    return access_token
+  end
+
+  private
+  def set_access_token
+    self.access_token = self.access_token.blank? ? generate_access_token : self.access_token
+  end
+
+  def generate_access_token
+    tmp_token = SecureRandom.urlsafe_base64(6)
+    self.class.where(access_token: tmp_token).blank? ? tmp_token : generate_access_token
+  end
 end
