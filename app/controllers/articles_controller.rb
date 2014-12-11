@@ -2,9 +2,9 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:tag]
-      @articles = Article.tagged_with(params[:tag]).order(created_at: :desc)
+      @articles = Article.where(published: true).tagged_with(params[:tag]).order(created_at: :desc)
     else
-      @articles = Article.all.order(created_at: :desc)
+      @articles = Article.where(published: true).order(created_at: :desc)
     end
     render "articles/index"
   end

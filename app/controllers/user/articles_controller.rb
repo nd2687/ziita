@@ -5,41 +5,53 @@ class User::ArticlesController < User::Base
 
   def index
     if params[:tag]
-      @articles = actual_user.articles.tagged_with(params[:tag]).order(created_at: :desc)
+      @articles = actual_user.articles.where(published: true).tagged_with(params[:tag]).order(created_at: :desc)
     else
-      @articles = actual_user.articles.order(created_at: :desc)
+      @articles = actual_user.articles.where(published: true).order(created_at: :desc)
     end
   end
 
   def show
     @article = actual_user.articles.find_by_access_token(params[:access_token])
+    unless @article
+      redirect_to user_articles_path(identify_name: actual_user.identify_name)
+    end
     @comments = @article.comments
   end
 
   def new
-    @article = Article.new
+    @article = current_user.articles.new
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.account = current_user
-    if @article.save
-      flash.notice = "新規記事を投稿しました。"
-      redirect_to user_articles_path(identify_name: current_user.identify_name)
+    if @article = current_user.articles.last
+      @article.update_attribute(:published, true)
+      if @article.save
+        flash.notice = "新規記事を投稿しました。"
+        redirect_to user_articles_path(identify_name: current_user.identify_name)
+      else
+        flash.now[:alert] = "新規記事の投稿に失敗しました。"
+        render action: 'new', layout: 'preview'
+      end
     else
-      flash.now[:alert] = "新規記事の投稿に失敗しました。"
-      render action: 'new', layout: 'preview'
+      flash.alert = "新規記事の投稿に失敗しました。"
+      redirect_to :back
     end
   end
 
   def edit
-    @article = Article.find_by_access_token(params[:access_token])
+    @article = current_user.articles.find_by_access_token(params[:access_token])
+    unless @article
+      redirect_to user_articles_path(identify_name: actual_user.identify_name)
+    end
   end
 
   def update
-    @article = Article.find_by_access_token(params[:access_token])
+    @article = current_user.articles.find_by_access_token(params[:access_token])
+    unless @article
+      redirect_to user_articles_path(identify_name: actual_user.identify_name)
+    end
     @article.assign_attributes(article_params)
-    @article.account = current_user
     if @article.save
       flash.notice = "記事を更新しました。"
       redirect_to user_article_path(identify_name: current_user.identify_name, access_token: @article.access_token)
@@ -50,7 +62,10 @@ class User::ArticlesController < User::Base
   end
 
   def destroy
-    @article = Article.find_by_access_token(params[:access_token])
+    @article = current_user.articles.find_by_access_token(params[:access_token])
+    unless @article
+      redirect_to user_articles_path(identify_name: actual_user.identify_name)
+    end
     if @article.destroy
       flash.notice = "記事を削除しました。"
       redirect_to user_articles_path(identify_name: current_user.identify_name)
@@ -60,8 +75,26 @@ class User::ArticlesController < User::Base
     end
   end
 
+  def create_temp
+    if params[:article_valid] == "true"
+      @article = current_user.articles.last
+      @article.assign_attributes(title: params[:title], body: params[:body], tag_list: params[:tag_list])
+    else
+      @article = current_user.articles.build(title: params[:title], body: params[:body], tag_list: params[:tag_list])
+    end
+    @article.published = false
+    if @article.save
+      render json: { success: true }
+    else
+      render json: ( @article.errors.present? ? ([false] + @article.errors.full_messages) : [] )
+    end
+  end
+
   def like
     @article = Article.find_by_access_token(params[:access_token])
+    unless @article
+      redirect_to user_articles_path(identify_name: actual_user.identify_name)
+    end
     current_user.stacked_articles << @article
     flash.notice = "stacked!"
     redirect_to user_article_path(identify_name: actual_user.identify_name, access_token: @article.access_token)
@@ -69,6 +102,9 @@ class User::ArticlesController < User::Base
 
   def unlike
     current_user.stacked_articles.delete(Article.find_by_access_token(params[:access_token]))
+    unless @article
+      redirect_to user_articles_path(identify_name: actual_user.identify_name)
+    end
     flash.notice = "unstack"
     redirect_to stacked_user_articles_path(identify_name: actual_user.identify_name)
   end
