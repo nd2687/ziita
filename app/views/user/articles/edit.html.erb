@@ -1,3 +1,6 @@
+<%= link_to "?使える記法(markdown)について", [ :help, :markdown ],
+  style: "margin-left: 20px;", target: "_blank" %>
+
 <%= form_for @article, url: user_article_path(identify_name: current_user.identify_name,
       access_token: @article.access_token), method: :patch do |f| %>
 

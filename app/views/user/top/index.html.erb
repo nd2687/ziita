@@ -8,6 +8,9 @@
   </li>
   <% if actual_user == current_user %>
     <li>
+      <%= link_to "下書き記事一覧", [ :user, :drafts ] %>
+    </li>
+    <li>
       <%= link_to "stackした記事", stacked_user_articles_path(identify_name: current_user.identify_name) %>
     </li>
   <% end %>
