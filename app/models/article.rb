@@ -9,6 +9,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  access_token :string(8)        default(""), not null
+#  published    :boolean          default(TRUE), not null
 #
 # Indexes
 #
@@ -34,7 +35,7 @@ class Article < ActiveRecord::Base
   def validate_tag
     tag_list.each do |tag|
       errors.add(:tag_list, :too_long) unless tag.length < 32
-      errors.add(:tag_list, :format) unless tag =~ /\A[-a-zA-Z\W_ ]+\z/
+      errors.add(:tag_list, :format) unless tag =~ /\A[\w!-~]+\z/
     end
   end
 

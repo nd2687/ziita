@@ -1,11 +1,11 @@
 <% @page_title = @article.title  %>
 
 <hr>
-<p>記事を書いた人</p>
-<p>
-  <%= link_to @article.account.identify_name, user_root_path(
-    identify_name: @article.account.identify_name) %>さん
-</p>
+<!-- <p>記事を書いた人</p> -->
+<!-- <p> -->
+<!--   <%#= link_to @article.account.identify_name, user_root_path( -->
+<!--     identify_name: @article.account.identify_name) %>さん -->
+<!-- </p> -->
 
 <hr>
 <div class="article-title">
@@ -29,11 +29,11 @@
 </div>
 
 <hr>
+  <%#= link_to @article.account.identify_name, user_root_path(
+    identify_name: @article.account.identify_name) %>
+  <%# 作成日時
+  <%#= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
 <p class="right-elm">
-  <%= link_to @article.account.identify_name, user_root_path(
-    identify_name: @article.account.identify_name) %>さん
-  作成日時
-  <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
   <% if current_user && @article.account == current_user %>
     <%= link_to '記事編集', edit_user_article_path(
           identify_name: current_user.identify_name, access_token: @article.access_token) %><br>

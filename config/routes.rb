@@ -47,7 +47,9 @@ Rails.application.routes.draw do
           get :stacked
         end
         resources :comments, except: :index
+        post :create_temp, on: :member
       end
+      resources :drafts, param: :access_token, only: [ :index, :show, :update, :destroy ]
       resources :accounts, param: :account_token, except: [ :show, :destroy ] do
         member do
           get :settings
