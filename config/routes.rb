@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     get :ziita
   end
 
-  namespace :contact do
-    get :us
-  end
+  get 'inquiry' => 'inquiry#index'
+  post 'inquiry/confirm' => 'inquiry#confirm'
+  post 'inquiry/thanks' => 'inquiry#thanks'
 
   namespace :term do
     get :use
