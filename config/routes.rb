@@ -19,10 +19,6 @@ Rails.application.routes.draw do
   post 'inquiry/confirm' => 'inquiry#confirm'
   post 'inquiry/thanks' => 'inquiry#thanks'
 
-  namespace :term do
-    get :use
-  end
-
   resources :articles, param: :access_token, only: [ :index, :show ] do
     member { patch "like", "unlike" }
     collection do
