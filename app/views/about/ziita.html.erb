@@ -1,20 +1,8 @@
 <%= image_tag '/images/ziita2.png', size: '200x200', alt: "ziitaサムネイル",
   class: 'img-responsive' %>
-<% snippet = capture do %>
-# Ziitaとは
-エンジニアのための技術共有サービスです。  
-stack機能、コメント機能などで各々工夫してご利用ください。  
-  
-2014/12/06   
-今後Ziitaはエンジニアが自由に作るということも可能にしたいので、  
-オープンソースソフトウェアになる予定です。  
-  
-# 有志のデザイナー募集中です。
-現在ziitaはbootstrapによりデザインを行っております。  
-アイコン制作等、単発的なものでも構いません。  
-少しでもご協力いただける方はお問い合わせフォームよりご連絡ください。  
-  
-  
-<% end %>
 
-<%= markdown snippet %>
+<%= content_tag(:div, :style => "text-align:center;") do %>
+2014/12/06
+OSS GitHub<br>
+come soon
+<% end %>
