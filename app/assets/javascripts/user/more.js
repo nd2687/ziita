@@ -1,7 +1,5 @@
 $(function(){
 
-  //$('ul.articles').children(".x-more").attr("class", "x-more");
-
   function min_article_id () {
     var min = 0;
     $('ul.articles').children('li').each(function(){
