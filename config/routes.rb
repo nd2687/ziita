@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post 'inquiry/thanks' => 'inquiry#thanks'
 
   resources :articles, param: :access_token, only: [ :index, :show ] do
+    get :more, on: :collection
     member { patch "like", "unlike" }
     collection do
       get 'tag/:tag', to: 'articles#index', as: :tag

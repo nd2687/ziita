@@ -3,13 +3,7 @@ class User::TopController < User::Base
     if params[:format].in?(["jpg", "png", "gif"])
       send_image
     end
-
-    if params[:tag]
-      @articles = actual_user.articles.tagged_with(params[:tag]).order(created_at: :desc)
-    else
-      @articles = actual_user.articles.order(created_at: :desc)
-    end
-
+    @articles = actual_user.articles.order(created_at: :desc).limit(20)
     @stacked_count = 0
     actual_user.articles.map{|article| @stacked_count += article.stacks.count }
     @stacked_count

@@ -1,10 +1,9 @@
 class ArticlesController < ApplicationController
-
   def index
     if params[:tag]
-      @articles = Article.where(published: true).tagged_with(params[:tag]).order(created_at: :desc)
+      @articles = Article.articles_list.tagged_with(params[:tag])
     else
-      @articles = Article.where(published: true).order(created_at: :desc)
+      @articles = Article.articles_list
     end
     render "articles/index"
   end
@@ -24,5 +23,10 @@ class ArticlesController < ApplicationController
   def unlike
     current_user.stacked_articles.delete(Article.find_by_access_token(params[:access_token]))
     redirect_to @article
+  end
+
+  def more
+    @articles = Article.articles_list(older_than: params[:older_than])
+    render json: { html: render_to_string("more") }
   end
 end
