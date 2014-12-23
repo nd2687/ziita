@@ -2,9 +2,9 @@ class TopController < ApplicationController
   def index
     @tags = Article.tag_counts.map{|t|t.name}.sort
     if params[:tag]
-      @articles = Article.where(published: true).tagged_with(params[:tag]).order(created_at: :desc)
+      @articles = Article.articles_list.tagged_with(params[:tag])
     else
-      @articles = Article.where(published: true).order(created_at: :desc)
+      @articles = Article.articles_list
     end
   end
 end
