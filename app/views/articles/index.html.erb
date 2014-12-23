@@ -1,6 +1,6 @@
-<ul class="list-group">
+<ul class="list-group articles">
   <% @articles.each do |article| %>
-    <li class="list-group-item article-wrap">
+    <li class="list-group-item article-wrap" data-article_id="<%= article.id %>">
       <%= link_to article.title, article %>
       <% if ( stack_count = article.stacks.count) > 0 %>
       <span class="pull-right label label-success label-as-badge">
@@ -8,5 +8,12 @@
       </span>
       <% end %>
     </li>
+  <% end %>
+  <% if @articles.count == 20 %>
+    <%= content_tag :li, class: "list-group-item article-wrap x-more",
+          style: "text-align:center;padding-top:6px; list-style: none",
+          data: { href: more_articles_path } do %>
+      <%= image_tag("/images/ajax-loader.gif") %>
+    <% end %>
   <% end %>
 </ul>

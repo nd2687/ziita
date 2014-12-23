@@ -43,6 +43,15 @@ class Article < ActiveRecord::Base
     return access_token
   end
 
+  def self.articles_list(params = {})
+    rel = self.where(published: true).order("articles.created_at DESC")
+    rel = rel.limit(20)
+    if params[:older_than].present?
+      rel = rel.where("id < ?", params[:older_than].to_i)
+    end
+    return rel
+  end
+
   private
   def set_access_token
     self.access_token = self.access_token.blank? ? generate_access_token : self.access_token
