@@ -102,9 +102,6 @@ class User::ArticlesController < User::Base
 
   def unlike
     current_user.stacked_articles.delete(Article.find_by_access_token(params[:access_token]))
-    unless @article
-      redirect_to user_articles_path(identify_name: actual_user.identify_name)
-    end
     flash.notice = "unstack"
     redirect_to stacked_user_articles_path(identify_name: actual_user.identify_name)
   end

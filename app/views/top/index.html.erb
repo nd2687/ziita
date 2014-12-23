@@ -1,7 +1,8 @@
+<p>新着記事<%= @articles.count %>件</p>
 <div class="articlesAndAny">
-  <ul class="list-group">
+  <ul class="list-group articles">
     <% @articles.each do |article| %>
-      <li class="list-group-item article-wrap">
+      <li class="list-group-item article-wrap" data-article_id="<%= article.id %>">
         <%= link_to article.title, article %>
         <% if ( stack_count = article.stacks.count) > 0 %>
         <span class="pull-right label label-success label-as-badge">
