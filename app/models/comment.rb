@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  article_id :integer          not null
 #  name       :string(255)
-#  body       :text             not null
+#  body       :text(65535)      not null
 #  created_at :datetime
 #  updated_at :datetime
 #

@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  account_id   :integer          not null
-#  data         :binary
+#  data         :binary(65535)
 #  content_type :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
