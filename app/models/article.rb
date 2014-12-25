@@ -5,11 +5,11 @@
 #  id           :integer          not null, primary key
 #  account_id   :integer          not null
 #  title        :string(255)      not null
-#  body         :text             not null
+#  body         :text(65535)      not null
 #  created_at   :datetime
 #  updated_at   :datetime
 #  access_token :string(8)        default(""), not null
-#  published    :boolean          default(TRUE), not null
+#  published    :boolean          default("1"), not null
 #
 # Indexes
 #

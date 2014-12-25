@@ -6,9 +6,9 @@
 #  identify_name     :string(255)      not null
 #  email             :string(255)      not null
 #  email_for_index   :string(255)      not null
-#  email_publication :boolean          default(FALSE), not null
+#  email_publication :boolean          default("0"), not null
 #  password_digest   :string(255)      not null
-#  self_introduction :text
+#  self_introduction :text(65535)
 #  sites             :string(255)
 #  company           :string(255)
 #  residence         :string(255)
