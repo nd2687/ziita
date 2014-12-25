@@ -10,8 +10,8 @@
 #
 # Indexes
 #
+#  fk_rails_613190d4c1                        (article_id)
 #  index_stacks_on_account_id_and_article_id  (account_id,article_id) UNIQUE
-#  stacks_article_id_fk                       (article_id)
 #
 
 class Stack < ActiveRecord::Base

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails', '4.1.6'
+gem 'rails', '4.2.0'
 gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -28,7 +28,6 @@ gem 'omniauth-twitter'
 gem 'figaro'
 
 gem 'rails-i18n'
-gem 'foreigner', '~> 1.6.1'
 
 group :test do
   gem 'rspec-rails', '~> 3.1.0'

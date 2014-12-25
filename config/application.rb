@@ -15,6 +15,7 @@ module Ziita
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :ja
     config.active_record.default_timezone = :local
+    # config.active_record.raise_in_transactional_callbacks = true
 
     ActsAsTaggableOn.force_lowercase = true
     ActsAsTaggableOn.remove_unused_tags = true
