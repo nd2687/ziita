@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1>バグ報告</h1>
+</div>
+
+<%= link_to "バグ報告をする", :new_bug_report %>
+
+<div class="well">
+  <ul class="list-group articles">
+    <% @bug_reports.each do |report| %>
+      <li class="list-group-item">
+        <%= report.title %><br>
+        <hr>
+        <%= report.body %><br>
+        <br>
+        <%= report.created_at.strftime('%Y/%m/%d %H:%M') %>
+        <% if report.completable == true %>
+        <span class="pull-right label label-success label-as-badge">
+          このバグは修正済みです。
+        </span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

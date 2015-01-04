@@ -14,7 +14,7 @@
 #  residence         :string(255)
 #  created_at        :datetime
 #  updated_at        :datetime
-#  account_token     :string(20)       default(""), not null
+#  account_token     :string(255)      default("")
 #
 # Indexes
 #

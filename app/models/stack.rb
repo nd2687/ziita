@@ -10,7 +10,7 @@
 #
 # Indexes
 #
-#  fk_rails_613190d4c1                        (article_id)
+#  fk_rails_2d5d7fc40c                        (article_id)
 #  index_stacks_on_account_id_and_article_id  (account_id,article_id) UNIQUE
 #
 

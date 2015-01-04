@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      bug_report:
+        title: 件名
+        body: バグ内容

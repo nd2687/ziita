@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208081112) do
+ActiveRecord::Schema.define(version: 20150104161317) do
 
   create_table "account_identities", force: :cascade do |t|
     t.integer  "account_id", limit: 4,   null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20141208081112) do
     t.datetime "updated_at"
   end
 
-  add_index "account_identities", ["account_id"], name: "fk_rails_6771a4fabb", using: :btree
+  add_index "account_identities", ["account_id"], name: "fk_rails_273a77a371", using: :btree
   add_index "account_identities", ["provider", "uid", "email"], name: "index_account_identities_on_provider_and_uid_and_email", unique: true, using: :btree
   add_index "account_identities", ["provider", "uid", "nickname"], name: "index_account_identities_on_provider_and_uid_and_nickname", unique: true, using: :btree
 
@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 20141208081112) do
   add_index "articles", ["access_token"], name: "index_articles_on_access_token", unique: true, using: :btree
   add_index "articles", ["account_id"], name: "index_articles_on_account_id", using: :btree
 
+  create_table "bug_reports", force: :cascade do |t|
+    t.string   "title",       limit: 255,                 null: false
+    t.string   "body",        limit: 255,                 null: false
+    t.boolean  "completable", limit: 1,   default: false, null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.integer  "article_id", limit: 4,     null: false
     t.string   "name",       limit: 255
@@ -93,7 +101,7 @@ ActiveRecord::Schema.define(version: 20141208081112) do
   end
 
   add_index "stacks", ["account_id", "article_id"], name: "index_stacks_on_account_id_and_article_id", unique: true, using: :btree
-  add_index "stacks", ["article_id"], name: "fk_rails_613190d4c1", using: :btree
+  add_index "stacks", ["article_id"], name: "fk_rails_2d5d7fc40c", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4

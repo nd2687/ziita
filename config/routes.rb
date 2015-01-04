@@ -11,9 +11,8 @@ Rails.application.routes.draw do
     get :markdown
   end
 
-  namespace :about do
-    get :ziita
-  end
+  get 'ziita' => 'top#ziita'
+  resources :bug_reports, only: [ :index, :new, :create ]
 
   get 'inquiry' => 'inquiry#index'
   post 'inquiry/confirm' => 'inquiry#confirm'
@@ -31,6 +30,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'top#index'
     resource :session, only: [ :new, :create, :destroy ]
+    resources :bug_reports
   end
 
   scope "/:identify_name" do
