@@ -9,6 +9,7 @@ class InquiryController < ApplicationController
     if @inquiry.valid?
       render action: 'confirm'
     else
+      flash.now[:alert] = "入力に誤りがあります。"
       render action: 'index'
     end
   end
