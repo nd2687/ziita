@@ -2,6 +2,13 @@
   class: 'img-responsive' %>
 
 <%= content_tag(:div, :style => "text-align:center;") do %>
-  OSS
-  <%= link_to "GitHub", "https://github.com/totoman/ziita" %>
+
+  <p style="margin-top:200px;">ziita は OSS です。自由なサイトであり続けます。</p>
+  <%= link_to image_tag('https://danielgroves.net/assets/images/portfolio/github/logo.png',
+    alt: "Githubアイコン"), "https://github.com/totoman/ziita", class: 'img-responsive', style: 'margin-bottom:200px;' %>
+
+  <p> スポンサー</p>
+  <%= render 'shared/adsense' %>
+  <br>
 <% end %>
+
