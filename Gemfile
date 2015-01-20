@@ -58,3 +58,5 @@ end
 group :assets do
   gem 'coffee-rails'
 end
+
+gem 'google-analytics-rails'

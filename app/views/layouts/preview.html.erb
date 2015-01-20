@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'preview', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <link rel="icon" href="/images/ziita3.png" type="image/vnd.microsoft.icon">
+    <%= analytics_init if Rails.env.production? %>
   </head>
   <body>
 
