@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150104161317) do
     t.datetime "updated_at"
   end
 
-  add_index "account_identities", ["account_id"], name: "fk_rails_273a77a371", using: :btree
+  add_index "account_identities", ["account_id"], name: "fk_rails_c0afc751cd", using: :btree
   add_index "account_identities", ["provider", "uid", "email"], name: "index_account_identities_on_provider_and_uid_and_email", unique: true, using: :btree
   add_index "account_identities", ["provider", "uid", "nickname"], name: "index_account_identities_on_provider_and_uid_and_nickname", unique: true, using: :btree
 
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20150104161317) do
   end
 
   add_index "stacks", ["account_id", "article_id"], name: "index_stacks_on_account_id_and_article_id", unique: true, using: :btree
-  add_index "stacks", ["article_id"], name: "fk_rails_2d5d7fc40c", using: :btree
+  add_index "stacks", ["article_id"], name: "fk_rails_2f1598bf0e", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4

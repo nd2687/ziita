@@ -13,7 +13,7 @@
 #
 # Indexes
 #
-#  fk_rails_273a77a371                                        (account_id)
+#  fk_rails_c0afc751cd                                        (account_id)
 #  index_account_identities_on_provider_and_uid_and_email     (provider,uid,email) UNIQUE
 #  index_account_identities_on_provider_and_uid_and_nickname  (provider,uid,nickname) UNIQUE
 #
