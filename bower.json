@@ -1,0 +1,29 @@
+{
+  "name": "ziita",
+  "version": "1.0.0",
+  "authors": [
+    "Takashi Kawano <kawano.fanta@gmail.com>"
+  ],
+  "description": "WEB app for engineer",
+  "main": "index.html",
+  "keywords": [
+    "programming",
+    "engineer"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.ziita.jp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "3.3.1",
+    "jquery-ujs": "~1.0.3",
+    "jquery-ui": "1.11.2"
+  }
+}
