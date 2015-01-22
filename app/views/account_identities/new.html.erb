@@ -1,25 +1,23 @@
-<div class="well">
-  <%= form_for @account, url: :account_identity do |f| %>
-    <div class="form-horizontal">
-      <div class="form-group">
-        <%= f.label :identify_name, class: "col-xs-4" %>
-        <div class="col-xs-8">
-          <%= f.text_field :identify_name, autofocus: true, class: "form-control" %>
-          <%= error_message(@account, :identify_name) %>
+<div class="row account-new">
+  <div class="well">
+    <%= form_for @account, url: :account_identity do |f| %>
+      <div class="form-horizontal">
+        <div class="form-group">
+          <%= f.label :identify_name, class: "col-xs-4" %>
+          <div class="col-xs-8">
+            <%= f.text_field :identify_name, autofocus: true, class: "form-control", placeholder: "ログイン名" %>
+            <%= error_message(@account, :identify_name) %>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :email, class: "col-xs-4" %>
-        <div class="col-xs-8">
-          <%= f.text_field :email, class: "form-control" %>
-          <%= error_message(@account, :email) %>
+        <div class="form-group">
+          <%= f.label :email, class: "col-xs-4" %>
+          <div class="col-xs-8">
+            <%= f.text_field :email, class: "form-control", placeholder: "メールアドレス" %>
+            <%= error_message(@account, :email) %>
+          </div>
         </div>
+        <%= submit_tag '登録する', class: 'btn btn-success btn-block', type: 'submit' %>
       </div>
-      <div class="form-group">
-        <div class="col-xs-offset-2 col-xs-10">
-          <%= submit_tag '登録する', class: 'btn btn-default' %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

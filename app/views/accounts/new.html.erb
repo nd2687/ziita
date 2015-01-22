@@ -5,27 +5,27 @@
         <div class="form-group">
           <%= f.label :identify_name, class: "col-xs-4" %>
           <div class="col-xs-8">
-            <%= f.text_field :identify_name, autofocus: true, class: "form-control" %>
+            <%= f.text_field :identify_name, autofocus: true, class: "form-control", placeholder: "ログイン名" %>
             <%= error_message(@account, :identify_name) %>
           </div>
         </div>
         <div class="form-group">
           <%= f.label :email, class: "col-xs-4" %>
           <div class="col-xs-8">
-            <%= f.text_field :email, class: "form-control" %>
+            <%= f.text_field :email, class: "form-control", placeholder: "メールアドレス" %>
             <%= error_message(@account, :email) %>
           </div>
         </div>
         <div class="form-group">
           <%= f.label :password, class: "col-xs-4" %>
           <div class="col-xs-8">
-            <%= f.password_field :password, class: "form-control" %>
+            <%= f.password_field :password, class: "form-control", placeholder: "パスワード" %>
           </div>
         </div>
         <div class="form-group">
           <%= f.label :password_confirmation, class: "col-xs-4" %>
           <div class="col-xs-8">
-            <%= f.password_field :password_confirmation, class: "form-control" %>
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード再入力" %>
             <%= error_message(@account, :password_confirmation) %>
           </div>
         </div>
