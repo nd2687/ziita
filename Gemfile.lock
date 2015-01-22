@@ -55,7 +55,6 @@ GEM
       rake (>= 0.8.7)
     arel (6.0.0)
     bcrypt (3.1.9)
-    bower-rails (0.9.2)
     builder (3.2.2)
     bullet (4.14.0)
       activesupport (>= 3.0.0)
@@ -279,7 +278,6 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   annotate (~> 2.6.5)
   bcrypt (~> 3.1.7)
-  bower-rails
   bullet
   capistrano (~> 3.2.1)
   capistrano-bundler (~> 1.1)

@@ -1,5 +1,5 @@
 /*
- *= require bootstrap-sass
+ *= require ./bootstrap
  *= require_tree ./user
  *= require_tree ./common
  *= require_self

@@ -1,3 +1,0 @@
-asset 'jquery', '2.1.1'
-asset 'jquery-ujs'
-asset 'bootstrap-sass', '3.3.2'

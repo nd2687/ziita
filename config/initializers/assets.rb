@@ -11,3 +11,14 @@ Rails.application.config.assets.version = '1.0'
 %w(admin user preview).each do |name|
   Rails.application.config.assets.precompile += [ "#{name}.css", "#{name}.js" ]
 end
+
+Rails.root.join('vendor', 'assets', 'bower_components').to_s.tap do |bower_path|
+  Rails.application.config.sass.load_paths << bower_path
+  Rails.application.config.assets.paths << bower_path
+end
+
+Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets',
+  'bower_components', 'bootstrap-sass-official', 'assets', 'fonts')
+
+Rails.application.config.assets.precompile << 
+  %r(bootstrap/[\w-]+\.(?:eot|svg|ttf|woff)$)
