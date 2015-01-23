@@ -7,7 +7,6 @@
     identify_name: @article.account.identify_name) %>さん
 </p>
 
-<hr>
 <div class="article-title">
 <p class="article-wrap h3"><%= @article.title %></p>
 </div>
@@ -41,7 +40,8 @@
   <% end %>
 </p>
 
-<p>コメント</p>
+<p><%= link_to 'コメントをする', new_user_article_comment_path(identify_name: actual_user.identify_name,
+     article_access_token: @article.access_token) %></p>
 <ul class="list-group">
   <% @article.comments.each do |comment| %>
     <li class="list-group-item">
@@ -53,9 +53,6 @@
     </li>
   <% end %>
 </ul>
-
-<hr>
-<p><%= link_to 'コメントを追加', new_user_article_comment_path(identify_name: actual_user.identify_name, article_access_token: @article.access_token) %></p>
 
 <p class="right-elm">
   <% if current_user && @article.account == current_user %>

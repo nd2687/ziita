@@ -2,6 +2,10 @@
 
 <h4><%= @page_title %></h4>
 
+<% if @drafts.count == 0 %>
+  こんにちは、<%= @current_user.identify_name %>さん<br>
+  現在、<%= @current_user.identify_name %>さんの持つ下書き投稿はありません。
+<% else %>
 <ul class="list-group">
   <% @drafts.each do |draft| %>
     <li class="list-group-item article-wrap">
@@ -9,3 +13,4 @@
     </li>
   <% end %>
 </ul>
+<% end %>

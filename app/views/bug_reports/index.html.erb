@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>バグ報告</h1>
+  <h2>バグ報告</h2>
 </div>
 
 <%= link_to "バグ報告をする", :new_bug_report %>
@@ -10,7 +10,7 @@
       <li class="list-group-item">
         <%= report.title %><br>
         <hr>
-        <%= report.body %><br>
+        <%= hbr report.body %><br>
         <br>
         <%= report.created_at.strftime('%Y/%m/%d %H:%M') %>
         <% if report.completable == true %>

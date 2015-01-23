@@ -1,13 +1,12 @@
 <% @page_title = @article.title  %>
 
-<hr>
+<!-- <hr> -->
 <!-- <p>記事を書いた人</p> -->
 <!-- <p> -->
 <!--   <%#= link_to @article.account.identify_name, user_root_path( -->
 <!--     identify_name: @article.account.identify_name) %>さん -->
 <!-- </p> -->
 
-<hr>
 <div class="article-title">
   <p class="article-wrap h3"><%= @article.title %></p>
 </div>
@@ -40,7 +39,7 @@
   <% end %>
 </p>
 
-<p>コメント</p>
+<p><%= link_to 'コメントをする', [ :new, @article, :comment ] %></p>
 <ul class="list-group">
   <% @comments.each do |comment| %>
     <li class="list-group-item">
@@ -52,9 +51,6 @@
     </li>
   <% end %>
 </ul>
-
-<hr>
-<p><%= link_to 'コメントを追加', [ :new, @article, :comment ] %></p>
 
 <p class="right-elm">
   <% if current_user && @article.account == current_user %>
