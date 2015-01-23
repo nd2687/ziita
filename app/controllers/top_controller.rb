@@ -16,6 +16,8 @@ class TopController < ApplicationController
   private
   def resolve_layout
     case action_name
+    when "index"
+      "user_top"
     when "ziita"
       "html_page"
     else

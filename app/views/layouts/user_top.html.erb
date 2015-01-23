@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= page_title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="description" content="Ziitaは、エンジニアのための技術情報共有サービスです。 プログラミング技術に関する投稿、最新の技術の流行、備忘録等を公開できます。"></meta>
+    <%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'user', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link rel="icon" href="/images/ziita3.png" type="image/vnd.microsoft.icon">
+    <%= analytics_init if Rails.env.production? %>
+  </head>
+  <body>
+
+    <div id="header">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <%= render 'shared/header' %>
+        </div>
+      </nav>
+    </div>
+
+    <div class="jumbotron" id="first_access" style="text-align:center;padding:20px;">
+      <h1 style="color:#3B5998;">Hello, Ziita!</h1>
+      <p>Ziita はエンジニアのための技術共有サービスです。</p>
+      <% unless current_user %>
+        <p><%= link_to "登録して記事を投稿する", :new_account, id: 'first_access_new_button',
+          style: "display:none", class: 'btn btn-primary btn-lg', role: 'button' %></p>
+      <% end %>
+    </div>
+
+    <div class="page-content-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <%= flash_messages %>
+          <%= yield %>
+          <div class="page-top">
+            <p><a class="move-page-top">△ </a></p>
+          </div>
+        </div>
+      </div>
+      <div class="push"></div>
+    </div>
+
+    <div class="footer">
+      <p class="text-muted credit">
+        <%= render 'shared/footer' %>
+      </p>
+    </div>
+
+  </body>
+</html>
