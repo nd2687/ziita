@@ -61,8 +61,6 @@ module ApplicationHelper
     content += ' />'
     content += remove_tag_input
     content += '</li>'
-    p "#" * 100
-    p content
   end
 
   def remove_tag_input

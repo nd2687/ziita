@@ -14,15 +14,13 @@
 </div>
 
 <hr>
-
-<h3>
-  <%= link_to "この記事を公開する", user_draft_path(identify_name: current_user.identify_name,
-        access_token: @draft.access_token), method: :patch %>
-</h3>
-
 <p class="right-elm">
+  <span class="glyphicon glyphicon-time"></span>
+  <%= @draft.created_at.strftime('%Y/%m/%d %H:%M') %>
+  <%= link_to "この記事を公開する", user_draft_path(identify_name: current_user.identify_name,
+    access_token: @draft.access_token), method: :patch, class: 'btn btn-success' %>
   <% if current_user && @draft.account == current_user %>
-    <%= link_to "この記事を削除する", user_draft_path(identify_name: current_user.identify_name, access_token: @draft.access_token),
-          method: :delete, data: { confirm: "本当に削除しますか？" } %>
+    <%= link_to "削除", user_draft_path(identify_name: current_user.identify_name, access_token: @draft.access_token),
+      method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
   <% end %>
 </p>

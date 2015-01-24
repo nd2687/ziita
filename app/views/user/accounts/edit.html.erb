@@ -10,7 +10,7 @@
         <div class="col-xs-8">
           <%= imgf.file_field :uploaded_image, id: "lefile", style: "display:none" %>
           <div class="input-append">
-            <input id="photoCover" class="input-large" type="text">
+            <input id="photoCover" class="" type="text">
             <a class="btn" onclick="$('input[id=lefile]').click();">ブラウズ</a>
           </div>
           <%= error_message(@account.image, :uploaded_image) %>
@@ -62,8 +62,9 @@
         </div>
       </div>
 
-      <div class="form-group" style="width: 300px; margin: auto;">
-        <%= f.submit "更新", class: "btn btn-default", style: "width: 260px" %>
+      <div style="text-align:center;">
+        <br>
+        <%= f.submit "更新", class: "btn btn-primary", style: "width:200px" %>
       </div>
     </div>
   </div>

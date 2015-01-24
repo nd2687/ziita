@@ -1,26 +1,22 @@
 <% @page_title = @article.title  %>
 
-<hr>
-<p>記事を書いた人</p>
-<p>
-  <%= link_to @article.account.identify_name, user_root_path(
-    identify_name: @article.account.identify_name) %>さん
-</p>
-
 <div class="article-title">
-<p class="article-wrap h3"><%= @article.title %></p>
+  <p class="article-wrap h3"><%= @article.title %></p>
 </div>
-<div>
+<div class="right-elm">
   <% if (count = @article.stacks.count) > 0 %>
-    ★ <%= count %>
+    <span class="glyphicon glyphicon-star-empty"></span><%= count %>
   <% end %>
   <% if current_user && current_user.stackable_for?(@article) %>
     <%= link_to "stack!", like_user_article_path(identify_name: actual_user.identify_name,
           access_token: @article.access_token), method: :patch, class: 'button' %>
   <% end %>
-</div>
-<div class="right-elm">
-  <%= user_tag_link @article.tag_list %>
+  <%= link_to @article.account.identify_name, user_root_path(
+    identify_name: @article.account.identify_name), class: 'glyphicon glyphicon-user' %>
+  <% if @article.tag_list.count > 0 %>
+    <span class="glyphicon glyphicon-tags"></span>
+    <%= user_tag_link @article.tag_list %>
+  <% end %>
 </div>
 
 <hr>
@@ -31,17 +27,19 @@
 <hr>
 <p class="right-elm">
   <%= link_to @article.account.identify_name, user_root_path(
-    identify_name: @article.account.identify_name) %>さん
-  作成日時
+    identify_name: @article.account.identify_name), class: 'glyphicon glyphicon-user' %>
+  <span class="glyphicon glyphicon-time"></span>
   <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
   <% if current_user && @article.account == current_user %>
     <%= link_to '記事編集', edit_user_article_path(
-          identify_name: current_user.identify_name, access_token: @article.access_token) %><br>
+          identify_name: current_user.identify_name, access_token: @article.access_token), class: 'btn btn-primary' %>
+    <%= link_to "削除", user_article_path(identify_name: current_user.identify_name, access_token: @article.access_token),
+          method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
   <% end %>
 </p>
 
-<p><%= link_to 'コメントをする', new_user_article_comment_path(identify_name: actual_user.identify_name,
-     article_access_token: @article.access_token) %></p>
+<p><%= link_to 'コメント', new_user_article_comment_path(identify_name: actual_user.identify_name,
+     article_access_token: @article.access_token), class: "btn btn-default" %></p>
 <ul class="list-group">
   <% @article.comments.each do |comment| %>
     <li class="list-group-item">
@@ -53,10 +51,3 @@
     </li>
   <% end %>
 </ul>
-
-<p class="right-elm">
-  <% if current_user && @article.account == current_user %>
-    <%= link_to "この記事を削除する", user_article_path(identify_name: current_user.identify_name, access_token: @article.access_token),
-          method: :delete, data: { confirm: "本当に削除しますか？" } %>
-  <% end %>
-</p>

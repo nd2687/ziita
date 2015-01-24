@@ -10,9 +10,12 @@
           identify_name: article.account.identify_name, access_token: article.access_token) %>
         <span class="badge">
         <%= link_to 'unstack', unlike_user_article_path(
-          identify_name: current_user.identify_name, access_token: article.access_token), method: :patch %>
+          identify_name: current_user.identify_name, access_token: article.access_token), method: :patch, style: "color:white;" %>
         </span>
       </li>
     <% end %>
   </ul>
+<% else %>
+  こんにちは、<%= @current_user.identify_name %>さん<br>
+  現在、<%= @current_user.identify_name %>さんの持つstacked記事はありません。
 <% end %>

@@ -2,22 +2,21 @@
   <h2>バグ報告</h2>
 </div>
 
-<%= link_to "バグ報告をする", :new_bug_report %>
+<div style="text-align:right;margin-bottom:10px;">
+  <%= link_to "バグ報告をする", :new_bug_report, class: 'btn btn-primary' %>
+</div>
 
 <div class="well">
   <ul class="list-group articles">
     <% @bug_reports.each do |report| %>
       <li class="list-group-item">
-        <%= report.title %><br>
+        「<%= report.title %>」<%= report.created_at.strftime('%Y/%m/%d %H:%M') %>
+        <% if report.completable == true %>
+          <span class="pull-right label label-success label-as-badge"> このバグは修正済みです。 </span>
+          <br>
+        <% end %>
         <hr>
         <%= hbr report.body %><br>
-        <br>
-        <%= report.created_at.strftime('%Y/%m/%d %H:%M') %>
-        <% if report.completable == true %>
-        <span class="pull-right label label-success label-as-badge">
-          このバグは修正済みです。
-        </span>
-        <% end %>
       </li>
     <% end %>
   </ul>
