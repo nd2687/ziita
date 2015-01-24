@@ -29,7 +29,6 @@ class SessionsController < ApplicationController
       account_identity = OmniAuthAuthenticator.verify(env['omniauth.auth'])
       if account_identity == false
         flash.alert = "認証したいサイトのメールアドレスの設定を行ってください。"
-        render "failure"
       else
         if account_identity.new_record?
           session[:omniauth_provider] = account_identity.provider
@@ -37,17 +36,15 @@ class SessionsController < ApplicationController
           session[:omniauth_email] = account_identity.email
           session[:omniauth_nickname] = account_identity.nickname if account_identity.nickname.present?
           @account = account_identity
-          render :callback
         else
           session[:current_user_id] = account_identity.account.id
           flash.notice = "ログインしました"
-          render :callback
         end
       end
     else
       flash.alert = "エラーが発生したため認証ができませんでした。"
-      render "failure"
     end
+    render "callback"
   end
 
   def failure
