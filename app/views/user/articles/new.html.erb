@@ -1,13 +1,29 @@
-<%= link_to "?使える記法(markdown)について", [ :help, :markdown ],
-  style: "margin-left: 20px;", target: "_blank" %>
+<%= link_to " 使える記法(markdown)について", [ :help, :markdown ],
+  style: "margin-left: 20px;", class: 'glyphicon glyphicon-question-sign', target: "_blank" %>
 
 <%= form_for @article, url: user_articles_path(identify_name: current_user.identify_name),
       method: :post do |f| %>
 
+  <div class="form-horizontal preview-detail">
+    <div class="form-group">
+      <%= f.label :title, 'タイトル', class: "col-xs-2", style: "margin-left:30px;" %>
+      <div class="col-xs-7">
+        <%= f.text_field :title, placeholder: "タイトル", class: 'form-control' %>
+        <%= error_message(@article, :title) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <ul id="post_tags" class="" style="list-style:none;">
+        <%= initial_tag_list(@article.tag_list) %>
+      </ul>
+      <div style="margin-left:30px;"> <%= add_tag_input %> </div>
+      <%= f.hidden_field :tag_list %>
+    </div>
+  </div>
+
   <div class="row main-field" id="article-new">
     <div class="row">
       <%= error_message(@article, :body) %>
-
       <h3 class="col-xs-5 border facebook leftline7 preview-head">入力</h3>
       <h3 class="col-xs-5 border facebook leftline7 preview-head">プレビュー</h3>
     </div>
@@ -23,23 +39,6 @@
       </div>
     </div>
 
-    <div class="form-horizontal preview-detail">
-      <div class="form-group">
-        <%= f.label :title, 'タイトル', class: "col-xs-2 col-xs-offset-2" %>
-        <div class="col-xs-7">
-          <%= f.text_field :title, placeholder: "タイトル", class: 'form-control' %>
-          <%= error_message(@article, :title) %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :tag_list, 'タグ (半角コロン[, ]で複数設定できます)',
-          class: "col-xs-2 col-xs-offset-2" %>
-        <div class="col-xs-7">
-          <%= f.text_field :tag_list, placeholder: "タグ", class: 'form-control' %>
-          <%= error_message(@article, :tag_list) %>
-        </div>
-      </div>
-
       <div class="create-temp" data-access_token="<%= @article.access_token %>" 
         data-identify_name="<%= current_user.identify_name %>" data-article_valid=""></div>
       <div class="form-group">
@@ -49,7 +48,6 @@
       </div>
     </div>
 
-  </div>
 <% end %>
 
 <div class="footerNav"> 下書き保存しました。 </div>

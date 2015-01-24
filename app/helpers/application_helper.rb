@@ -44,4 +44,28 @@ module ApplicationHelper
     title = @page_title + " - " + title if @page_title
     title
   end
+
+  # タグの初期化(更新時に使用)
+  def initial_tag_list(tag_list)
+    raw tag_list.map{|tag| generate_tag_list(tag)}.join
+  end
+
+  def add_tag_input
+    link_to 'タグを追加', '#', class: 'btn btn-warning', type: "button",
+      onclick: "add_tag_field(\"#{escape_javascript(generate_tag_list)}\"); return false;"
+  end
+
+  def generate_tag_list(tag = nil)
+    content = '<li class="tag_list" style="display:inline-block;margin:5px;"><input class="tag_input form-control" type="text"'
+    content += " value=\"#{tag}\"" if tag
+    content += ' />'
+    content += remove_tag_input
+    content += '</li>'
+    p "#" * 100
+    p content
+  end
+
+  def remove_tag_input
+    link_to '削除', "#", onclick: "remove_tag_field(this); return false;"
+  end
 end

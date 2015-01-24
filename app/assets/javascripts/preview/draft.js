@@ -56,7 +56,7 @@ $(function(){
             $.each(errors, function(i, value){
               error += value += "\n"
             });
-            alert(error);
+            //alert(error);
           }
         },
         error: function(){
