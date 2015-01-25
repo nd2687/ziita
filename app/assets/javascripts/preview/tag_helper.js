@@ -7,13 +7,14 @@ $(document).on('page:change', function(){
 });
 
 function set_tag_watch(){
+  change_tag_list();
   $(document).on("keyup", ".tag_input", function(){
     change_tag_list();
   });
 }
 
 function add_tag_field(content){
-  $('#post_tags').append(content);
+  $('#article_tags').append(content);
 }
 
 function remove_tag_field(link){
@@ -28,7 +29,6 @@ function change_tag_list(){
     if(str != ''){
       buf.push(str);
     }
-    console.log(buf)
   });
   $("#article_tag_list").val(buf.join(','));
 }

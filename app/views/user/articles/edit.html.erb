@@ -9,12 +9,12 @@
       <div class="form-group">
         <%= f.label :title, 'タイトル', class: "col-xs-2", style: "margin-left:30px;" %>
         <div class="col-xs-7">
-          <%= f.text_field :title, placeholder: "タイトル", class: 'form-control' %>
+          <%= f.text_field :title, placeholder: "タイトル", class: 'form-control', autofocus: true %>
           <%= error_message(@article, :title) %>
         </div>
       </div>
       <div class="form-group">
-        <ul id="post_tags" class="" style="list-style:none;">
+        <ul id="article_tags" class="" style="list-style:none;">
           <%= initial_tag_list(@article.tag_list) %>
         </ul>
         <div style="margin-left:30px;">

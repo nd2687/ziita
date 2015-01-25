@@ -8,15 +8,18 @@
     <div class="form-group">
       <%= f.label :title, 'タイトル', class: "col-xs-2", style: "margin-left:30px;" %>
       <div class="col-xs-7">
-        <%= f.text_field :title, placeholder: "タイトル", class: 'form-control' %>
+        <%= f.text_field :title, placeholder: "タイトル", class: 'form-control', autofocus: true %>
         <%= error_message(@article, :title) %>
       </div>
     </div>
     <div class="form-group">
-      <ul id="post_tags" class="" style="list-style:none;">
+      <ul id="article_tags" class="" style="list-style:none;">
         <%= initial_tag_list(@article.tag_list) %>
       </ul>
-      <div style="margin-left:30px;"> <%= add_tag_input %> </div>
+      <div style="margin-left:30px;">
+        <%= add_tag_input %>
+        <%= error_message(@article, :tag_list) %>
+      </div>
       <%= f.hidden_field :tag_list %>
     </div>
   </div>
@@ -30,8 +33,7 @@
 
     <div class="row tweaked-margin">
       <div class="col-xs-6">
-        <%= f.text_area :body, placeholder: '本文', class: 'form-control preview-area',
-              autofocus: true %>
+        <%= f.text_area :body, placeholder: '本文', class: 'form-control preview-area' %>
       </div>
 
       <div class="col-xs-6 preview">
