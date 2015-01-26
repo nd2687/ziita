@@ -15,6 +15,7 @@ class User::ArticlesController < User::Base
     @article = actual_user.articles.find_by_access_token(params[:access_token])
     unless @article
       redirect_to user_articles_path(identify_name: actual_user.identify_name)
+      return false
     end
     @comments = @article.comments
   end
@@ -43,6 +44,7 @@ class User::ArticlesController < User::Base
     @article = current_user.articles.find_by_access_token(params[:access_token])
     unless @article
       redirect_to user_articles_path(identify_name: actual_user.identify_name)
+      return false
     end
   end
 
@@ -50,6 +52,7 @@ class User::ArticlesController < User::Base
     @article = current_user.articles.find_by_access_token(params[:access_token])
     unless @article
       redirect_to user_articles_path(identify_name: actual_user.identify_name)
+      return false
     end
     @article.assign_attributes(article_params)
     if @article.save
@@ -65,6 +68,7 @@ class User::ArticlesController < User::Base
     @article = current_user.articles.find_by_access_token(params[:access_token])
     unless @article
       redirect_to user_articles_path(identify_name: actual_user.identify_name)
+      return false
     end
     if @article.destroy
       flash.notice = "記事を削除しました。"
@@ -94,6 +98,7 @@ class User::ArticlesController < User::Base
     @article = Article.find_by_access_token(params[:access_token])
     unless @article
       redirect_to user_articles_path(identify_name: actual_user.identify_name)
+      return false
     end
     current_user.stacked_articles << @article
     flash.notice = "stacked!"

@@ -1,21 +1,21 @@
 class User::DraftsController < User::Base
   def index
-    @drafts = current_user.articles.where(published: false)
+    @drafts = current_user.drafts
   end
 
   def show
-    @draft = current_user.articles.where(published: false).
-      find_by_access_token(params[:access_token])
+    @draft = current_user.drafts.find_by_access_token(params[:access_token])
     unless @draft
       redirect_to [ :user, :drafts ]
+      return false
     end
   end
 
   def update
-    @draft = current_user.articles.where(published: false).
-      find_by_access_token(params[:access_token])
+    @draft = current_user.drafts.find_by_access_token(params[:access_token])
     unless @draft
       redirect_to [ :user, :drafts ]
+      return false
     end
     if @draft.update_attribute(:published, true)
       flash.notice = "下書き記事を公開しました。"
@@ -27,10 +27,10 @@ class User::DraftsController < User::Base
   end
 
   def destroy
-    @draft = current_user.articles.where(published: false).
-      find_by_access_token(params[:access_token])
+    @draft = current_user.drafts.find_by_access_token(params[:access_token])
     unless @draft
       redirect_to [ :user, :drafts ]
+      return false
     end
     if @draft.destroy
       flash.notice = "下書き記事を削除しました。"

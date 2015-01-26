@@ -124,6 +124,10 @@ class Account < ActiveRecord::Base
     return account_token
   end
 
+  def drafts
+    articles.where(published: false)
+  end
+
   private
   def set_account_token
     self.account_token = self.account_token.blank? ? generate_account_token : self.account_token

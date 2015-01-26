@@ -1,12 +1,12 @@
 $(function(){
   if($('#article-new').length){
     var typingTimer;
-    var doneTypingInterval = 2000;
+    var doneTypingInterval = 3000;
 
     $('form').submit(function(){
       if($('textarea#article_body').val() === "" && 
-         $('input#article_title').val() === "" && 
-           $('input#article_tag_list').val() === "" || $('input#article_title').val() === ""){
+          $('input#article_title').val() === "" && 
+          $('input#article_tag_list').val() === "" || $('input#article_title').val() === ""){
         alert('入力値が不正です。');
         return false;
       };
@@ -48,6 +48,7 @@ $(function(){
             };
             var $nav = $('.footerNav');
             $nav.slideDown(200, function(){ $nav.delay(1000).slideUp(500);});
+            $('#submit-article').attr('disabled', false);
           }
           else if(data[0] === false){
             data.shift();
@@ -57,6 +58,7 @@ $(function(){
               error += value += "\n"
             });
             //alert(error);
+            console.log(error);
           }
         },
         error: function(){

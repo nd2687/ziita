@@ -13,7 +13,7 @@ $(function() {
         langPrefix: ''
     });
 
-    $('#article_body').keyup(function() {
+    $('#article_body').keyup(function(){
       var src = $(this).val();
       var html = marked(src);
 
