@@ -10,7 +10,8 @@ module MarkdownHelper
     markdown = Redcarpet::Markdown.new(
       SyntaxHighlight,
       autolink: true,
-      space_after_headers: true,
+# ヘッダのハッシュの後にスペースを必須にする
+#      space_after_headers: true,
       fenced_code_blocks: true,
       tables: true,
       strikethrough: true,
