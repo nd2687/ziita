@@ -15,7 +15,8 @@ module MarkdownHelper
       fenced_code_blocks: true,
       tables: true,
       strikethrough: true,
-      superscript: true
+# キャレット^ によるスクリプトを無効
+#      superscript: true
     )
     markdown.render(text).html_safe
   end
