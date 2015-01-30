@@ -24,18 +24,24 @@
 </div>
 
 <hr>
-<p class="right-elm">
-  <%= link_to @article.account.identify_name, user_root_path(
-    identify_name: @article.account.identify_name), class: 'glyphicon glyphicon-user' %>
-  <span class="glyphicon glyphicon-time"></span>
-  <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
-  <% if current_user && @article.account == current_user %>
-    <%= link_to '記事編集', edit_user_article_path(
-          identify_name: current_user.identify_name, access_token: @article.access_token), class: 'btn btn-primary' %>
-    <%= link_to "削除", user_article_path(identify_name: current_user.identify_name, access_token: @article.access_token),
-          method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
-  <% end %>
-</p>
+
+<div class="article-bottom-block">
+  <div class="article-bottom-block-part">
+    <%= render 'shared/social_button' %>
+  </div>
+  <div class="right-elm article-bottom-block-part">
+    <%= link_to @article.account.identify_name, user_root_path(
+      identify_name: @article.account.identify_name), class: 'glyphicon glyphicon-user' %>
+    <span class="glyphicon glyphicon-time"></span>
+    <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %>
+    <% if current_user && @article.account == current_user %>
+      <%= link_to '記事編集', edit_user_article_path(
+            identify_name: current_user.identify_name, access_token: @article.access_token), class: 'btn btn-primary' %>
+      <%= link_to "削除", user_article_path(identify_name: current_user.identify_name, access_token: @article.access_token),
+            method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+</div>
 
 <p><%= link_to 'コメント', [ :new, @article, :comment ], class: 'btn btn-default' %></p>
 <ul class="list-group">
