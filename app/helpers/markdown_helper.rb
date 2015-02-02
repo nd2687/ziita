@@ -10,13 +10,11 @@ module MarkdownHelper
     markdown = Redcarpet::Markdown.new(
       SyntaxHighlight,
       autolink: true,
-# ヘッダのハッシュの後にスペースを必須にする
-#      space_after_headers: true,
       fenced_code_blocks: true,
       tables: true,
-      strikethrough: true,
-# キャレット^ によるスクリプトを無効
-#      superscript: true
+      strikethrough: true
+      # space_after_headers: true, ヘッダのハッシュの後にスペースを必須にする
+      # superscript: true キャレット^ によるスクリプトを無効
     )
     markdown.render(text).html_safe
   end
