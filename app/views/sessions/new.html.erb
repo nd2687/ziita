@@ -12,15 +12,11 @@
         <%= password_field_tag :password, '', class: "form-control", type: "password", placeholder: "パスワード" %>
         <span class="help-block"></span>
       </div>
-    <!--
-      <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
       <div class="checkbox">
         <label>
-            <input type="checkbox" name="remember" id="remember"> Remember login
+            <input type="checkbox" name="remember" id="remember"> 次回から自動でログイン
         </label>
-        <p class="help-block">(if this is a private computer)</p>
       </div>
-    -->
       <%= submit_tag 'ログイン', class: 'btn btn-default btn-block', type: "submit" %>
     <% end %>
   </div>

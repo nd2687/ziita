@@ -21,10 +21,11 @@ class AccountIdentitiesController < ApplicationController
       session.delete(:omniauth_uid)
       session.delete(:omniauth_email)
       session.delete(:omniauth_nickname)
-      session[:current_user_id] = ai.account_id
+      cookies.permanent.signed[:current_user_id] = ai.account_id
       flash.notice = "アカウント登録完了しました"
       redirect_to user_root_path(identify_name: @account.identify_name)
     else
+      cookies.delete(:current_user_id)
       flash.now[:alert] = "アカウント登録に失敗しました"
       render action: 'new'
     end

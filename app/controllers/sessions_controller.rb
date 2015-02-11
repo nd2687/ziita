@@ -9,7 +9,12 @@ class SessionsController < ApplicationController
 
   def create
     if user = UserPasswordAuthenticator.verify(params[:identify_name], params[:password])
-      session[:current_user_id] = user.id
+      if params[:remember] == "on"
+        cookies.permanent.signed[:current_user_id] = user.id
+      else
+        cookies.delete(:current_user_id)
+        session[:current_user_id] = user.id
+      end
       flash.notice = 'ログインしました'
       redirect_to :root
     else
@@ -19,6 +24,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    cookies.delete(:current_user_id)
     session.delete(:current_user_id)
     flash.notice = 'ログアウトしました'
     redirect_to :root
@@ -37,6 +43,7 @@ class SessionsController < ApplicationController
           session[:omniauth_nickname] = account_identity.nickname if account_identity.nickname.present?
           @account = account_identity
         else
+          cookies.permanent.signed[:current_user_id] = account_identity.account.id
           session[:current_user_id] = account_identity.account.id
           flash.notice = "ログインしました"
         end

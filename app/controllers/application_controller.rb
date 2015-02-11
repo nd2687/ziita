@@ -31,8 +31,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    if session[:current_user_id]
-      @current_user = Account.find_by_id(session[:current_user_id])
+    if current_user_id = cookies.signed[:current_user_id] || session[:current_user_id]
+      @current_user = Account.find_by(id: current_user_id)
       session.delete(:current_user_id) unless @current_user
     end
     @current_user
