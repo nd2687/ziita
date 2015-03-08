@@ -5,9 +5,6 @@ ja:
         title: タイトル
         body: 本文
         tag_list: タグ
-      comment:
-        name: 名前
-        body: 本文
     errors:
       models:
         article:
@@ -20,9 +17,3 @@ ja:
             tag_list:
               too_long: は32文字以内にしてください。
               format: はアルファベットで入力してください。
-        comment:
-          attributes:
-            name:
-              too_long: は16文字以内にしてください。
-            body:
-              blank: を入力してください。

@@ -43,7 +43,6 @@
   </div>
 </div>
 
-<p><%= link_to 'コメント', [ :new, @article, :comment ], class: 'btn btn-default' %></p>
 <ul class="list-group">
   <% @comments.each do |comment| %>
     <li class="list-group-item">
@@ -55,3 +54,19 @@
     </li>
   <% end %>
 </ul>
+
+<p id="article-ptag" data-article-access_token="<%= @article.access_token %>" 
+  data-current_user="<%= current_user.identify_name if article_user? %>">コメント追加フォーム<p>
+<% @comment = Comment.new(article_id: @article.id) %>
+<%= form_for @comment, url: article_comments_path(article_access_token: @article.access_token), 
+  method: :post, remote: true do |f| %>
+  <%= f.label :name, "名前" %>
+  <%= f.text_field :name, autofocus: true %>
+<p>
+  <%= f.label :body, "本文" %><br>
+  <%= f.text_area :body, class: 'comment-area' %>
+</p>
+<% end %>
+<div class="form-group">
+  <button class="btn btn-default article-comment-submit">追加</button>
+</div>

@@ -43,7 +43,6 @@ Rails.application.routes.draw do
           get 'tag/:tag', to: 'articles#index', as: :tag
           get :stacked
         end
-        resources :comments, except: :index
         post :create_temp, on: :member
       end
       resources :drafts, param: :access_token, only: [ :index, :show, :update, :destroy ]

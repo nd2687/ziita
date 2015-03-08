@@ -68,4 +68,11 @@ class ApplicationController < ActionController::Base
     @actual_user
   end
   helper_method :actual_user
+
+  def article_user?
+    return false unless params[:access_token]
+    @article = Article.find_by_access_token(params[:access_token])
+    @article.account == current_user ? true : false
+  end
+  helper_method :article_user?
 end

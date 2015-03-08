@@ -6,25 +6,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(name: params[:name], body: params[:body])
     @comment.article = @article
-    @comment.name = "名無し" if @comment.name.empty?
-    if @comment.save
-      flash.notice = "コメントを追加しました！"
-      redirect_to [ @article ]
-    else
-      flash.now[:alert] = "コメントの追加に失敗しました。"
-      render action: 'new'
+    if @comment.save!
+      render json: [@comment.name, @comment.body, @comment.created_at.strftime("%Y/%m/%d %H:%M")]
     end
   end
 
   private
-  def comment_params
-    params.require(:comment).permit(
-      :name, :body
-    )
-  end
-
   def prepare_article
     @article = Article.find_by_access_token(params[:article_access_token])
   end
