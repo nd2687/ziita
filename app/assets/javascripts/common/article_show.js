@@ -31,6 +31,7 @@ $(document).on("ready page:load", function () {
       data: params,
       data_type: 'json',
       success: function(comments){
+        $('#loading').show();
         var comment_body = "";
         var txt = comments[1];
         // 改行を反映させる
@@ -52,6 +53,9 @@ $(document).on("ready page:load", function () {
         $('li.list-group-item').slideDown('slow');
         $('#comment_name').val('');
         $('#comment_body').val('');
+        setTimeout(function(){
+          $('#loading').hide();
+        }, 600);
       },
       error: function(){
         alert('error!');
