@@ -55,20 +55,19 @@
   <% end %>
 </ul>
 
-<p id="article-ptag" data-article-access_token="<%= @article.access_token %>" 
-  data-current_user="<%= current_user.identify_name if article_user? %>">コメント追加フォーム<p>
+<span id="article-ptag" data-article-access_token="<%= @article.access_token %>" 
+  data-current_user="<%= current_user.identify_name if article_user? %>"></span>
 <% @comment = Comment.new(article_id: @article.id) %>
 <%= form_for @comment, url: article_comments_path(article_access_token: @article.access_token), 
   method: :post, remote: true do |f| %>
-  <%= f.label :name, "名前" %>
-  <%= f.text_field :name %>
-<p>
-  <%= f.label :body, "本文" %><br>
-  <%= f.text_area :body, class: 'comment-area' %>
-</p>
+  <div style="display:none;">
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name %>
+  </div>
+<p> <%= f.text_area :body, class: 'CommentArea' %> </p>
 <% end %>
 <div class="form-group">
-  <button class="btn btn-default article-comment-submit">追加</button>
+  <button class="btn btn-default article-comment-submit" style="display:none;">追加</button>
 </div>
 
 <div id="loading" style="display:none;">

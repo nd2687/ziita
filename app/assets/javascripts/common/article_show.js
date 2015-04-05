@@ -1,7 +1,7 @@
 $(document).on("ready page:load", function () {
   $('.article-comment-submit').on("click", function(){
-    var article_access_token = $("p#article-ptag").attr("data-article-access_token");
-    var current_user = $("p#article-ptag").attr("data-current_user");
+    var article_access_token = $("#article-ptag").attr("data-article-access_token");
+    var current_user = $("#article-ptag").attr("data-current_user");
     var comment_name = $("input#comment_name").val();
     var params = {}
     if(comment_name.length > 16){ alert('名前は16文字以内にしてください。'); return false};

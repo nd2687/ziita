@@ -2,16 +2,30 @@
   text-align: right;
 }
 
-.comment-area {
-  width: 90%!important;
-  height: 300px!important;
-  border: solid 0.2em;
-  border-color: #6D84B4;
-  padding: 4px;
-}
-
 .article-title {
   padding: 1px 10px 10px;
   color: white;
   background-color: #3B5998;
+}
+
+textarea.CommentArea {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: solid 0.2em;
+  border-color: #ababab;
+  color: red;
+  padding: 3px;
+}
+
+textarea.CommentArea:hover {
+  border: 1px solid #888;
+}
+
+textarea.AfterCommentArea {
+  width: 100%;
+  color: red;
+  height: 200px;
 }
