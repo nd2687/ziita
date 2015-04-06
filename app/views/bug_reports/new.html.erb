@@ -12,7 +12,7 @@
     <tr>
       <th><%= f.label :body, "バグ内容" %></th>
       <%= error_message(@bug_report, :body) %>
-      <td><%= f.text_area :body %></td>
+      <td><%= f.text_area :body, class: 'ReportArea' %></td>
     </tr>
   </table>
 
