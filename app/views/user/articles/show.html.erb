@@ -1,4 +1,11 @@
-<% @page_title = @article.title  %>
+<%
+if @article.tags
+  tags = @article.tags.map(&:name).join('/')
+  @page_title = @article.title + " " + tags
+else
+  @page_title = @article.title
+end
+%>
 
 <div class="article-title">
   <p class="article-wrap h3"><%= @article.title %></p>

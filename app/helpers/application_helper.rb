@@ -40,7 +40,7 @@ module ApplicationHelper
   end
 
   def page_title
-    title = "Ziita"
+    title = "Ziita | エンジニアのための技術共有サービス"
     title = @page_title + " - " + title if @page_title
     title
   end
