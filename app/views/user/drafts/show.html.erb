@@ -17,6 +17,8 @@
 <p class="right-elm">
   <span class="glyphicon glyphicon-time"></span>
   <%= @draft.created_at.strftime('%Y/%m/%d %H:%M') %>
+  <%= link_to "編集", edit_user_draft_path(identify_name: current_user.identify_name, access_token: @draft.access_token),
+    class: 'btn btn-primary' %>
   <%= link_to "この記事を公開する", user_draft_path(identify_name: current_user.identify_name,
     access_token: @draft.access_token), method: :patch, class: 'btn btn-success' %>
   <% if current_user && @draft.account == current_user %>

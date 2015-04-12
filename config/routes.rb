@@ -45,7 +45,7 @@ Rails.application.routes.draw do
         end
         post :create_temp, on: :member
       end
-      resources :drafts, param: :access_token, only: [ :index, :show, :update, :destroy ]
+      resources :drafts, param: :access_token, only: [ :index, :show, :edit, :update, :destroy ]
       resources :accounts, param: :account_token, except: [ :show, :destroy ] do
         member do
           get :settings

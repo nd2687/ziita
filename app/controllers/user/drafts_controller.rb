@@ -1,4 +1,6 @@
 class User::DraftsController < User::Base
+  layout :resolve_layout
+
   def index
     @drafts = current_user.drafts
   end
@@ -9,6 +11,10 @@ class User::DraftsController < User::Base
       redirect_to [ :user, :drafts ]
       return false
     end
+  end
+
+  def edit
+    @draft = current_user.drafts.find_by_access_token(params[:access_token])
   end
 
   def update
@@ -38,6 +44,16 @@ class User::DraftsController < User::Base
     else
       flash.alert = "下書き記事の削除に失敗しました。"
       redirect_to :back
+    end
+  end
+
+  private
+  def resolve_layout
+    case action_name
+    when "edit"
+      "preview"
+    else
+      "user"
     end
   end
 end

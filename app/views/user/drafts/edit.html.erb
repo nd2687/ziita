@@ -1,0 +1,49 @@
+<%= link_to "?使える記法(markdown)について", [ :help, :markdown ],
+  style: "margin-left: 20px;", target: "_blank" %>
+
+<%= form_for @draft, url: user_draft_path(identify_name: current_user.identify_name,
+      access_token: @draft.access_token), method: :patch do |f| %>
+
+  <div class="row main-field">
+    <div class="form-horizontal preview-detail">
+      <div class="form-group">
+        <%= f.label :title, 'タイトル', class: "col-xs-2", style: "margin-left:30px;" %>
+        <div class="col-xs-7">
+          <%= f.text_field :title, placeholder: "タイトル", class: 'form-control', autofocus: true %>
+          <%= error_message(@draft, :title) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <ul id="article_tags" class="" style="list-style:none;">
+          <%= initial_tag_list(@draft.tag_list) %>
+        </ul>
+        <div style="margin-left:30px;">
+          <%= add_tag_input %>
+          <%= error_message(@draft, :tag_list) %>
+        </div>
+        <%= f.hidden_field :tag_list %>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= error_message(@draft, :body) %>
+
+      <h3 class="col-xs-5 border facebook leftline7 preview-head">入力</h3>
+      <h3 class="col-xs-5 border facebook leftline7 preview-head">プレビュー</h3>
+    </div>
+
+    <div class="row tweaked-margin">
+      <div class="col-xs-6">
+        <%= f.text_area :body, placeholder: '本文', class: 'form-control preview-area' %>
+      </div>
+
+      <div class="col-xs-6 preview">
+        <div id="result" class="preview-area pre-scrollable article-wrap"></div>
+      </div>
+    </div>
+
+    <div class="col-xs-offset-1 article-submit">
+      <%= f.submit "公開", class: "btn btn-success col-xs-5" %>
+    </div>
+  </div>
+<% end %>
