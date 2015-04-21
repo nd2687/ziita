@@ -1,16 +1,16 @@
 <%= form_for @inquiry, url: inquiry_confirm_path do |f| %>
   <div class="page-header">
-    <h2>お問い合わせ</h2>
+    <h1>お問い合わせ</h1>
   </div>
 
   <table class="table">
     <tr>
       <th>名前<span class="text-danger">(必須)</span></th>
-      <td><%= f.text_field :name %></td>
+      <td><%= f.text_field :name, placeholder: "名前(必須)", autofocus: true %></td>
     </tr>
     <tr>
       <th>メールアドレス<span class="text-danger">(必須)</span></th>
-      <td><%= f.text_field :email %></td>
+      <td><%= f.text_field :email, placeholder: "メールアドレス(必須)" %></td>
     </tr>
     <tr>
       <th>お問い合わせ内容</th>
