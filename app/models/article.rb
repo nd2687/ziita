@@ -44,7 +44,7 @@ class Article < ActiveRecord::Base
 
   def self.articles_list(params = {})
     rel = self.where(published: true).order("articles.created_at DESC")
-    rel = rel.limit(20)
+    rel = rel.limit(40)
     if params[:older_than].present?
       rel = rel.where("id < ?", params[:older_than].to_i)
     end
