@@ -12,7 +12,8 @@ module MarkdownHelper
       autolink: true,
       fenced_code_blocks: true,
       tables: true,
-      strikethrough: true
+      strikethrough: true,
+      no_intra_emphasis: true
       # space_after_headers: true, ヘッダのハッシュの後にスペースを必須にする
       # superscript: true キャレット^ によるスクリプトを無効
     )
