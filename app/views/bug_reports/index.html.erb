@@ -7,8 +7,9 @@
 </div>
 
 <ul class="list-group articles">
-  <% @bug_reports.each do |report| %>
+  <% @bug_reports.each_with_index do |report, i| %>
     <li class="list-group-item">
+      <span style="color:#88AA00"><%= i+1 %></span>
       「<strong><%= report.title %></strong>」<%= report.created_at.strftime('%Y/%m/%d %H:%M') %>
       <% if report.completable == true %>
         <span class="pull-right label label-success label-as-badge"> このバグは修正済みです。 </span>
