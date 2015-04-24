@@ -54,7 +54,7 @@ end
   <% @article.comments.each do |comment| %>
     <li class="list-group-item">
       <p><%= comment.name %></p>
-      <%= hbr comment.body %>
+         <%= hbr comment.body %>
       <p class="right-elm">
         <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
       </p>
@@ -62,16 +62,14 @@ end
   <% end %>
 </ul>
 
-<span id="article-ptag" data-article-access_token="<%= @article.access_token %>" 
+<span id="article-ptag" data-article-access_token="<%= @article.access_token %>"
   data-current_user="<%= current_user.identify_name if article_user? %>"></span>
-<% @comment = Comment.new(article_id: @article.id) %>
-<%= form_for @comment, url: article_comments_path(article_access_token: @article.access_token), 
-  method: :post, remote: true do |f| %>
+<%= form_for [ @article, @comment ], method: :post, remote: true do |f| %>
   <div style="display:none;">
     <%= f.label :name, "名前" %>
     <%= f.text_field :name %>
   </div>
-<p> <%= f.text_area :body, class: 'CommentArea' %> </p>
+  <p><%= f.text_area :body, class: 'CommentArea' %></p>
 <% end %>
 <div class="form-group">
   <button class="btn btn-default article-comment-submit" style="display:none;">追加</button>
