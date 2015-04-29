@@ -17,7 +17,6 @@ class User::ArticlesController < User::Base
       redirect_to user_articles_path(identify_name: actual_user.identify_name)
       return false
     end
-    @comment = @article.comments.build
     @comments = @article.comments
   end
 

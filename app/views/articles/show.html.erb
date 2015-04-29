@@ -64,7 +64,8 @@ end
 
 <span id="article-ptag" data-article-access_token="<%= @article.access_token %>"
   data-current_user="<%= current_user.identify_name if article_user? %>"></span>
-<%= form_for [ @article, @comment ], method: :post, remote: true do |f| %>
+<% @comment = Comment.new(article_id: @article) %>
+<%= form_for @comment, url: article_comments_path(@article), method: :post, remote: true do |f| %>
   <div style="display:none;">
     <%= f.label :name, "名前" %>
     <%= f.text_field :name %>
