@@ -9,23 +9,8 @@
   text-align: center;
 }
 
-textarea.CommentArea {
-  width: 200px;
-  height: 30px;
-  border: 1px solid #888;
-  padding: 3px;
-}
-
-textarea.CommentArea:hover {
-  border: solid 0.2em;
-  border-color: #ababab;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-}
-
-textarea.AfterCommentArea {
-  width: 100%;
-  color: red;
-  height: 200px;
+.CommentArea {
+  width: 100%!important;
+  height: 300px!important;
+  padding: 4px;
 }

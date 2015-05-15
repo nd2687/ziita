@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by_access_token(params[:access_token])
+    @comment = @article.comments.build
     @comments = @article.comments
   end
 

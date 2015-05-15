@@ -52,30 +52,23 @@ end
 
 <ul class="list-group">
   <% @article.comments.each do |comment| %>
-    <li class="list-group-item">
-      <p><%= comment.name %></p>
-         <%= hbr comment.body %>
-      <p class="right-elm">
-        <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-      </p>
-    </li>
+    <% if comment.persisted? %>
+      <li class="list-group-item">
+        <p><%= comment.name %></p>
+           <%= hbr comment.body %>
+        <p class="right-elm">
+          <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </p>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
-<span id="article-ptag" data-article-access_token="<%= @article.access_token %>"
-  data-current_user="<%= current_user.identify_name if article_user? %>"></span>
-<% @comment = Comment.new(article_id: @article) %>
-<%= form_for @comment, url: article_comments_path(@article), method: :post, remote: true do |f| %>
-  <div style="display:none;">
-    <%= f.label :name, "名前" %>
-    <%= f.text_field :name %>
-  </div>
+<%= form_for [ @article, @comment ], remote: true do |f| %>
+  <%= f.label :name, "名前" %>
+  <%= f.text_field :name %>
   <p><%= f.text_area :body, class: 'CommentArea' %></p>
+  <div class="form-group">
+    <%= f.submit "追加", class: "btn btn-default" %>
+  </div>
 <% end %>
-<div class="form-group">
-  <button class="btn btn-default article-comment-submit" style="display:none;">追加</button>
-</div>
-
-<div id="loading" style="display:none;">
-  <img src="/images/gif-load.gif">
-</div>
