@@ -42,4 +42,8 @@ $(document).on("ready page:load", function () {
     console.log("error");
   })
 
+  $('#CommentSubmit').on('click', function(){
+    var target = $('.list-group li:last-child').get(0).offsetTop;
+    $('html,body').animate({ scrollTop: target }, 'fast');
+  })
 })
