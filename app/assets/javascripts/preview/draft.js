@@ -57,8 +57,9 @@ $(function(){
             $.each(errors, function(i, value){
               error += value += "\n"
             });
-            //alert(error);
-            console.log(error);
+            if($(document).find('.ErrorDraft').length > 0) { $('.ErrorDraft').remove(); }
+            $('html,body').animate({scrollTop: 0}, 'fast');
+            $('#preview-page').prepend($("<p class='ErrorDraft' style='color:red'>"+error+"</p>"));
           }
         },
         error: function(){
