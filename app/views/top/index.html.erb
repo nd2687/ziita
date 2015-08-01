@@ -21,9 +21,12 @@
   <% end %>
 </ul>
 
+<%= render 'shared/big_banner' %>
+
 <h4>登録タグ一覧</h4>
 <% @tags.each do |tag| %>
   <span class="label label-default top-tag-index">
     <%= link_to tag, tag_articles_path(tag) %>
   </span>
 <% end %>
+
