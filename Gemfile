@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.3.3'
 
-gem 'rails', '4.2.0'
+gem 'rails', '5.0.0'
 gem 'mysql2'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.1'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'turbolinks'
@@ -17,7 +17,7 @@ gem 'nokogiri', '~> 1.6.3'
 gem 'redcarpet', '~> 3.2.1'
 gem 'coderay'
 
-gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts-as-taggable-on', :git => 'https://github.com/F3pix/acts-as-taggable-on'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
 gem 'omniauth'
@@ -29,7 +29,7 @@ gem 'rails-i18n'
 
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
-  gem 'capybara', '~> 2.4.1'
+  gem 'capybara', '~> 2.8'
   gem 'launchy'
   gem 'factory_girl_rails', '~> 4.4.1'
 end
@@ -37,7 +37,6 @@ end
 group :development do
   gem "bullet"
   gem 'spring-commands-rspec', '~> 1.0.2'
-  gem 'quiet_assets', '~> 1.0.3'
   gem 'annotate', '~> 2.6.5'
   gem 'pry', '~> 0.10.1'
   gem 'pry-rails', '~> 0.3.2'

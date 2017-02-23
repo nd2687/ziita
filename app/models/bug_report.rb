@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  title       :string(255)      not null
 #  body        :string(255)      not null
-#  completable :boolean          default("0"), not null
+#  completable :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

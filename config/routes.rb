@@ -28,14 +28,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root 'top#index'
+    root 'top#index', as: :root
     resource :session, only: [ :new, :create, :destroy ]
     resources :bug_reports
   end
 
   scope "/:identify_name" do
     namespace :user, path: "" do
-      root 'top#index'
+      root 'top#index', as: :root
       resource :session, only: [ :destroy ]
       resources :articles, param: :access_token do
         member { patch "like", "unlike" }

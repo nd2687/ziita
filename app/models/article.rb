@@ -8,7 +8,8 @@
 #  body         :text(65535)      not null
 #  created_at   :datetime
 #  updated_at   :datetime
-#  access_token :string(255)      default("")
+#  access_token :string(8)        default(""), not null
+#  published    :boolean          default(TRUE), not null
 #
 # Indexes
 #
