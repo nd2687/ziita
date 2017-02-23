@@ -14,8 +14,8 @@ Ziita
   
 バージョン情報
 --
-Ruby 2.2.0  
-Rails 4.2.0  
+Ruby 2.3.3  
+Rails 5.0.0  
 node.js 0.10 以上  
 Bower 1.3 以上  
   
