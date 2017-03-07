@@ -28,7 +28,7 @@ gem 'figaro'
 gem 'rails-i18n'
 
 group :test do
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.5.0.beta'
   gem 'capybara', '~> 2.8'
   gem 'launchy'
   gem 'factory_girl_rails', '~> 4.4.1'
